@@ -1,0 +1,18 @@
+form {
+    width: 80%;
+    margin: 0 auto;
+}
+input
+{
+float:right;
+clear:both;
+margin-right:20%;
+}
+label
+{
+clear:both;
+}
+.red
+{
+color:red;
+}
