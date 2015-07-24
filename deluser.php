@@ -29,6 +29,8 @@ if(!empty($_POST['nom']))
 else
 {
 ?>
+<h3>Supprimer un utilisateur</h3>
+
 <form method="post" action="">
 
 	<fieldset>

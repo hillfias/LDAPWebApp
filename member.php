@@ -30,6 +30,9 @@ if ($ds) {
 		echo 'Dossier utilisateur : '.$info[$i]['homedirectory'][0];
 		echo '<br />';
 		echo 'Identifiant utilisateur unique : '.$info[$i]['uidnumber'][0];
+		echo '<br /><form method="post" action="deluser.php"><input type="hidden" name="nom" id="nom" value="'.$info[$i]['cn'][0].'"/><input type="submit" class="button" value="Supprimer Utilisateur ?" />';
+	  
+	   
 		echo '</p><br />';
 	}
  }

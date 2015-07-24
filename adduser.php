@@ -178,7 +178,7 @@ else
 					$info["objectClass"][0] = "inetOrgPerson";
 					$info["objectClass"][1] = "posixAccount";
 					$info["objectClass"][2] = "top";
-					$info["sn"] = "$prenom";
+					$info["sn"] = "$nom";
 					$info["userPassword"] = $_POST['mdp'];
 					$info["userid"] = "$diminutif";
 					$info["uidNumber"] = "$uid";
