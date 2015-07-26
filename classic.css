@@ -1,4 +1,4 @@
-form 
+form.spe
 {
 width: 80%;
 margin: 0 auto;
@@ -41,5 +41,12 @@ width:400px;
 .button
 {
 display:block;
-width:300px;
+width:200px;
+float:none;
+margin:20px;
+margin-left:10%;
+}
+.clear
+{
+clear:both;
 }

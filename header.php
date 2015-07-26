@@ -42,7 +42,7 @@ if(!empty($_POST['mdp']) AND !isset($_SESSION['connected']))
 	{
 		// formulaire avec message d'erreur
 ?>
-	<form method="post" action="">
+	<form method="post" action="" class="spe">
 
 	<fieldset>
     <legend>S'authentifier</legend>
@@ -68,7 +68,7 @@ if(!empty($_POST['mdp']) AND !isset($_SESSION['connected']))
 else if(!isset($_SESSION['connected']))
 {
 ?>
-	<form method="post" action="">
+	<form method="post" action="" class="spe">
 
 	<fieldset>
     <legend>S'authentifier</legend>
