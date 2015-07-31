@@ -2,7 +2,7 @@
 include('header.php');
 // Constantes supplémentaires qui serviront au cours du script.
 // -------------------------------------------
-$CONSTANTES['gid'] = (int) file_get_contents("gid.txt"); // Ici on récupère le gid incrémenté par rapport au dernier groupe ajouté.
+$CONSTANTES['gid'] = (int) file_get_contents("data/gid.txt"); // Ici on récupère le gid incrémenté par rapport au dernier groupe ajouté.
 // -------------------------------------------
 if(!isset($_SESSION['connected']))
 {

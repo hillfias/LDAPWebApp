@@ -99,9 +99,9 @@ if(!empty($_POST['nom']) AND !empty($_POST['prenom']) AND !empty($_POST['mdp']) 
 				ldap_close($ds);
 				
 				// On incrémente automatiquement l'uid 
-				$mf = (int) file_get_contents("uid.txt");
+				$mf = (int) file_get_contents("../data/uid.txt");
 				$mf++;
-				$monfichier2 = fopen('uid.txt', 'w+');
+				$monfichier2 = fopen('../data/uid.txt', 'w+');
 				fseek($monfichier2, 0); // On remet le curseur au début du fichier
 				fputs($monfichier2, $mf); // On écrit le nouveau uid
 				fclose($monfichier2);

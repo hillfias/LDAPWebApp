@@ -1,3 +1,4 @@
+<?php
 		$name = $_POST['nom'];
 		$ds = ldap_connect($CONSTANTES['adresseIp'], $CONSTANTES['port']);  // on se connecte au serveur LDAP distant
 		ldap_set_option($ds, LDAP_OPT_PROTOCOL_VERSION, 3);
@@ -21,3 +22,4 @@
 			
 			ldap_close($ds);
 		}
+?>

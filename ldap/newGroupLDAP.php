@@ -50,9 +50,9 @@
 					ldap_close($ds);
 					
 					// On incrémente automatiquement le gid
-					$mf = (int) file_get_contents("gid.txt");
+					$mf = (int) file_get_contents("../data/gid.txt");
 					$mf++;
-					$monfichier2 = fopen('gid.txt', 'w+');
+					$monfichier2 = fopen('../data/gid.txt', 'w+');
 					fseek($monfichier2, 0); // On remet le curseur au début du fichier
 					fputs($monfichier2, $mf); // On écrit le nouveau uid
 					fclose($monfichier2);
