@@ -1,5 +1,4 @@
-
-<p id="menucontainer"><a href="member.php" class="menutop">Liste des membres</a>
+<p id="menucontainer"><a href="./" class="menutop">Liste des membres</a>
 <a href="adduser.php" class="menutop">Ajouter un utilisateur</a>
 <a href="deluser.php" class="menutop">Supprimer un utilisateur</a>
 <a href="moduser.php" class="menutop">Modifier son profil</a>
