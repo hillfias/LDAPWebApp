@@ -2,7 +2,7 @@
 include('header.php');
 // Constantes supplémentaires qui serviront au cours du script.
 // -------------------------------------------
-$CONSTANTES['gid'] = (int) file_get_contents("gid.txt"); // Ici on récupère le gid incrémenté par rapport au dernier groupe ajouté.
+$CONSTANTES['gid'] = (int) file_get_contents("data/gid.txt"); // Ici on récupère le gid incrémenté par rapport au dernier groupe ajouté.
 // -------------------------------------------
 
 if (!isset($_POST['nom']))
@@ -63,6 +63,20 @@ if (!isset($_POST['nom']))
 }
 else
 {
+<<<<<<< HEAD
+	if (!isset($_POST['nom']))
+	{
+		// Si on n'a pas reçu de données, on affiche le formulaire
+		include('templates/forms/newgroup.php');
+	}
+	else
+	{
+		//Si on a reçu des données, On ajoute le groupe
+		include('ldap/newgroup.php');
+	}
+}
+?>
+=======
 // Sinon si on a reçu des données (uniquement celles qui sont nécessaires)...
 	if(!empty($_POST['nom']) AND !empty($_POST['adgr']))
 	{
@@ -133,3 +147,4 @@ else
 }
 
 ?>
+>>>>>>> 3c105a640a747607fecf3a154f6c958a9471fc33

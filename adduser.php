@@ -2,11 +2,25 @@
 include('header.php');
 // Constantes supplémentaires qui serviront au cours du script.
 // -------------------------------------------
-$CONSTANTES['uid'] = (int) file_get_contents("uid.txt"); // Ici on récupère l'uid incrémenté par rapport au dernier utilisateur ajouté.
+$CONSTANTES['uid'] = (int) file_get_contents("data/uid.txt"); // Ici on récupère l'uid incrémenté par rapport au dernier utilisateur ajouté.
 // -------------------------------------------
 
 if (!isset($_POST['nom']))
 {
+<<<<<<< HEAD
+	if (!isset($_POST['nom']))
+	{
+		// Si on n'a pas reçu de données, on affiche le formulaire
+		include('templates/forms/newUserForm.php');
+	}
+	else
+	{
+		// Sinon si on a reçu des données (uniquement celles qui sont nécessaires)...
+		include('ldap/newUserLDAP.php');
+	}
+}
+?>
+=======
 // Si on n'a pas reçu de données, on affiche le formulaire
 ?>
 
@@ -209,3 +223,4 @@ else
 }
 
 ?>
+>>>>>>> 3c105a640a747607fecf3a154f6c958a9471fc33

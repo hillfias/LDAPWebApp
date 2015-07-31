@@ -46,9 +46,9 @@ else
 			
 			if($_POST['mdp'] == 'root' AND $_POST['nom']== 'admin') // to do : récupérer le vrai mdp admin sur le ldap pour vérification
 			{
-				include('menutop.php');
 				$_SESSION['connected'] = 'Js%up£e58rP0w4;_a';
 				$_SESSION ['statut'] = 'admin';
+				header('Location: ./'); 
 			}
 			else
 			{
