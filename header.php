@@ -70,10 +70,7 @@ $CONSTANTES['nomFichier'] = $nomfichier;
 		// Si on est pas connecté, qu'on est pas à l'accueil et qu'on est pas en train d'essayer de se connecter, on coupe l'accès à la page
 		if(!(!empty($_SESSION['connected']) AND $_SESSION['connected'] == 'Js%up£e58rP0w4;_a') AND $nomfichier != 'index')
 		{
-			include('menutopdeco.php');
-			
-			echo '<p class="center">Connectez-vous pour accéder aux options proposées.</p>';	
-			exit();
+			header('Location: ./');
 		}
 		// Sinon si on est pas connecté mais qu'on est à la racine ou qu'on essaye de se connecter on ne coupe pas l'accès à la page mais on affiche un menu restreint
 		elseif($nomfichier == 'index' AND !isset($_SESSION['connected']))
