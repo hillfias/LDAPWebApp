@@ -29,17 +29,6 @@ if(!empty($_POST['nom']))
 }
 else
 {
-<<<<<<< HEAD
-	if(!isset($_POST['nom']))
-	{	
-		include('templates/forms/delUserForm.php');
-	}
-	else
-	{
-		//Si on reçoit les données (on del l'user)
-		include('ldap/delUserLDAP.php');
-	}
-=======
 ?>
 <h3 class="center">Supprimer un utilisateur</h3>
 
@@ -60,6 +49,5 @@ else
 	</fieldset>
 </form>
 <?php
->>>>>>> 3c105a640a747607fecf3a154f6c958a9471fc33
 }
 ?>

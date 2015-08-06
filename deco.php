@@ -1,12 +1,10 @@
 <?php
 session_start();
 
-// Détruit toutes les variables de session
+// On détruit toutes les variables de session
 $_SESSION = array();
 
-// Si vous voulez détruire complètement la session, effacez également
-// le cookie de session.
-// Note : cela détruira la session et pas seulement les données de session !
+// On efface le cookie de session
 if (ini_get("session.use_cookies")) {
     $params = session_get_cookie_params();
     setcookie(session_name(), '', time() - 42000,
@@ -15,7 +13,8 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-// Finalement, on détruit la session.
+// On détruit la session.
 session_destroy();
+
 header('Location: ./'); 
 ?>

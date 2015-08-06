@@ -1,0 +1,104 @@
+@import url("/stylesheets/sidepanel.css");
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+div#logs {/*unused*/
+border : 1px solid black;
+}
+div#main-content{
+	border : 1px solid #e8e8e8;
+	display: flex;
+	flex-wrap: nowrap;
+	align_item : stretch;
+}
+
+.side-panel{
+	width : 300px;
+	min-height : 400pt;
+    overflow-x : hidden;
+}
+div.side-panel-list{
+display : flex;
+flex-wrap: nowrap;
+flex-direction : column;
+}
+
+
+.main-panel{
+	border-left : 1px solid #e8e8e8;
+	flex : 1;
+	min-height : 150pt;
+	max-height : 400pt;	
+	display : flex;
+	flex-direction:column;
+	padding-left:20px;
+}
+.main-panel li{
+list-style-type: none;
+margin:15px 0 15px 0;
+}
+li img
+{
+margin-right:10px;
+}
+
+
+/*loading panel*/
+.loading-panel{
+height : 100%;
+padding-top:45%;
+}
+.loading-panel img{
+display: block;
+margin:auto;
+}
+
+
+
+/*navbar */
+.top-bar-section ul li > a {
+    font-size: 14px;
+    padding: 0px !important;
+    text-align : left;
+}
+
+.top-bar-section ul li > a [class*="icon-"],
+.top-bar-section ul li > a [class^="icon-"]
+{
+    font-size: 22px;
+    padding: 0.9375rem;
+}
+
+.top-bar-section li:not(.has-form) a:hover label {
+background : #222;
+}
+.top-bar-section ul li > a:label{
+    font-size: 14px;
+    padding: 0px !important;
+}
+
+
+
+/*menu gauche */
+.group
+{
+border-bottom: 1px solid #e8e8e8;
+
+padding-top:10px;
+padding-left:70px;
+}
+.group img
+{
+margin-left:10px;
+margin-right:10px;
+}
+.group > p
+{
+border-bottom: 1px solid #e8e8e8;
+padding-bottom:5px;
+margin-bottom:15px;
+text-align:left;
+margin-left:-70px;
+}
