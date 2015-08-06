@@ -102,3 +102,19 @@ margin-bottom:15px;
 text-align:left;
 margin-left:-70px;
 }
+.gene
+{
+background : #333;
+color: #B6B6B6;
+text-align:center;
+padding-bottom:12px;
+font-size:1.3em;
+}
+.gene a 
+{
+font-size:0.8em;
+}
+.right
+{
+float:right;
+}

@@ -4,10 +4,15 @@
 			<h1>Mini-tutoriel d'administration</h1>
 			<p>Bienvenue, Admin ! Vous pouvez :
 			<ul>
-				<li><?php echo '<img src="'.$CONSTANTES['cheminImages'].'iconeGroupe.png" alt="Groupe" title="groupe" width="30px"/>'; ?>Modifier un groupe en cliquant sur le nom du groupe</li>
-				<li><?php echo '<img src="'.$CONSTANTES['cheminImages'].'adminGroupe.png" alt="Admin" title="Admin" width="30px"/>'; ?>Changer l'administrateur d'un groupe en cliquant sur le nom de l'administrateur actuel</li>
-				<li><?php echo '<img src="'.$CONSTANTES['cheminImages'].'profil.png" alt="Admin" title="Admin" width="30px"/>'; ?>Modifier un utilisateur / enlever du groupe / supprimer en cliquant sur l'image ou le nom de l'utilisateur</li>
-				<li></li>
+				<li><?php echo '<img src="'.$CONSTANTES['cheminImages'].'boutonPlus.png" title="Ajouter un utilisateur" alt="Ajouter un utilisateur" width="30px"/>'; ?>Ajouter un groupe ou un utilisateur</li>
+				<li><?php echo '<img src="'.$CONSTANTES['cheminImages'].'iconeGroupe.png" alt="Groupe" title="groupe" width="30px"/>'; ?>Modifier un groupe</li>
+				<li><?php echo '<img src="'.$CONSTANTES['cheminImages'].'boutonRemove.png" alt="Utilisateur" title="Utilisateur" width="30px"/>'; ?>Supprimer un groupe</li>
+				<li><?php echo '<img src="'.$CONSTANTES['cheminImages'].'change.png" alt="Changer l\'admin" title="Changer l\'admin" width="30px"/>'; ?>Changer l'administrateur d'un groupe</li>
+				<li><?php echo '<img src="'.$CONSTANTES['cheminImages'].'profil.png" alt="Utilisateur" title="Utilisateur" width="30px"/>'; ?>Modifier un utilisateur</li>
+				<li><?php echo '<img src="'.$CONSTANTES['cheminImages'].'boutonRemove.png" alt="Supprimer un utilisateur" title="Supprimer un utilisateur" width="30px"/>'; ?>Supprimer un utilisateur</li>
+				<li><?php echo '<img src="'.$CONSTANTES['cheminImages'].'kick2.png" alt="Enlever un utilisateur" title="Enlever un utilisateur" width="30px"/>'; ?>Enlever un utilisateur d'un groupe</li>
+				
+
 				<li></li>
 			</ul>
 			</p>

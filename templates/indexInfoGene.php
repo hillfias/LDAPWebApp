@@ -1,6 +1,6 @@
+<div class="gene">
 <?php
-echo '<div class="centerblock">';
-echo '<p>Bienvenue sur le domaine '.ldap_dn2ufn($info[0]['dn']).' administré par <strong>'.$info[0]['cn'][0].'</strong> : <em>'.$info[0]['description'][0].'</em> (Groupe';
+echo '<a href=""><img src="'.$CONSTANTES['cheminImages'].'boutonPlus.png"  alt="Ajouter un groupe" title="Ajouter un groupe" width="15px"/></a> Groupe';
 
 if($infoGroupes['count'] == 0) echo ' : 0';
 elseif ($infoGroupes['count'] > 1)
@@ -11,14 +11,20 @@ else
 {
 	echo ' : '.$infoGroupes['count'];
 }
-
-if($infoUsers['count'] == 0) echo ', Utilisateur : 0).';
+echo ' |';
+if($infoUsers['count'] == 0) echo ' Utilisateur : 0';
 elseif ($infoUsers['count'] > 1)
 {
-	echo ', Utilisateurs : '.$infoUsers['count'].').';
+	echo ' Utilisateurs : '.$infoUsers['count'];
 }
 else
 {
-	echo ', Utilisateur : '.$infoUsers['count'].').';
+	echo ' Utilisateur : '.$infoUsers['count'];
 }
 ?>
+
+<a href="">
+<?php echo '<img src="'.$CONSTANTES['cheminImages'].'boutonPlus.png" title="Ajouter un utilisateur" alt="Ajouter un utilisateur" width="15px"/>';
+?>
+</a>
+</div>
