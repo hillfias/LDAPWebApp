@@ -29,9 +29,10 @@ $CONSTANTES['nomFichier'] = $nomfichier;
 <title>rAdmin</title>
 
 <link rel="stylesheet" href="<?php echo $CONSTANTES['cheminStylesheets']; ?>foundation.min.css">
+<link rel="stylesheet" href="<?php echo $CONSTANTES['cheminStylesheets']; ?>test.css">
  <link rel="stylesheet" href="<?php echo $CONSTANTES['cheminStylesheets']; ?>background.css"> 
 <link rel="stylesheet" href="<?php echo $CONSTANTES['cheminStylesheets']; ?>style.css">
-<link rel="stylesheet" href="<?php echo $CONSTANTES['cheminStylesheets']; ?>font.css">
+<link rel="stylesheet" href="<?php echo $CONSTANTES['cheminStylesheets']; ?>font.css"> 
 <!-- les includes js -->
 </head>
 <body>
