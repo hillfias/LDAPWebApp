@@ -1,25 +1,26 @@
 <div class="gene">
 <?php
-echo '<a href=""><img src="'.$CONSTANTES['cheminImages'].'boutonPlus.png"  alt="Ajouter un groupe" title="Ajouter un groupe" width="15px"/></a> Groupe';
+echo '<a href=""><img src="'.$CONSTANTES['cheminImages'].'boutonPlus.png"  alt="Ajouter un groupe" title="Ajouter un groupe" width="15px"/></a>';
+echo '<form name="supportform" method="post" action=""><input type="hidden" name="supporttype" /><a href="javascript:getsupport(\'groupe\')">Groupe';
 
 if($infoGroupes['count'] == 0) echo ' : 0';
 elseif ($infoGroupes['count'] > 1)
 {
-	echo 's : '.$infoGroupes['count'];
+	echo 's</a> : '.$infoGroupes['count'];
 }
 else
 {
-	echo ' : '.$infoGroupes['count'];
+	echo '</a> : '.$infoGroupes['count'];
 }
-echo ' |';
-if($infoUsers['count'] == 0) echo ' Utilisateur : 0';
+echo ' | <a href="javascript:getsupport(\'users\')">';
+if($infoUsers['count'] == 0) echo ' Utilisateur</a> : 0';
 elseif ($infoUsers['count'] > 1)
 {
-	echo ' Utilisateurs : '.$infoUsers['count'];
+	echo ' Utilisateurs</a> : '.$infoUsers['count'];
 }
 else
 {
-	echo ' Utilisateur : '.$infoUsers['count'];
+	echo ' Utilisateur</a> : '.$infoUsers['count'];
 }
 ?>
 

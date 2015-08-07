@@ -39,16 +39,23 @@ h1 {
   font-size: 1em;
   line-height: 1.5em;
   margin-left:0px;
+
 }
 
+
 .accordion dd > p {
-  padding: 1em 2em 1em 2em;
+  padding: 0;
   margin: 0;
+}
+.accordion dd  p {
+  padding: 0;
+  margin: 15px;
 }
 
 .accordion {
-  position: relative;
+  width:300px;
   background-color: #222;
+  position: absolute;
 }
 
 .container {
@@ -63,7 +70,7 @@ h1 {
 }
 
 .accordionTitle:before {
-  content: "+";
+  content: ">";
   font-size: 1.5em;
   line-height: 0.5em;
   float: left;
@@ -78,9 +85,9 @@ h1 {
 .accordionTitleActive { background-color: #222; }
 
 .accordionTitleActive:before {
-  -webkit-transform: rotate(-225deg);
-  -moz-transform: rotate(-225deg);
-  transform: rotate(-225deg);
+  -webkit-transform: rotate(450deg);
+  -moz-transform: rotate(450deg);
+  transform: rotate(450deg);
 }
 
 .accordionItem {

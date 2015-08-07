@@ -84,10 +84,16 @@ background : #222;
 /*menu gauche */
 .group
 {
-border-bottom: 1px solid #e8e8e8;
 
+color: #ccc;
 padding-top:10px;
-padding-left:70px;
+padding-left:50px;
+margin-left:-20px;
+}
+.user
+{
+margin-top:10px;
+margin-left:40px;
 }
 .group img
 {
@@ -96,11 +102,11 @@ margin-right:10px;
 }
 .group > p
 {
-border-bottom: 1px solid #e8e8e8;
+
 padding-bottom:5px;
 margin-bottom:15px;
 text-align:left;
-margin-left:-70px;
+margin-left:20px;
 }
 .gene
 {
@@ -110,17 +116,18 @@ text-align:center;
 padding-bottom:12px;
 font-size:1.3em;
 }
-.gene a 
-{
-font-size:0.8em;
-}
 .right
 {
 float:right;
 }
-
-
-
+form[name="supportform"]
+{
+display:inline;
+}
+form[name="supportform"] a
+{
+color: #B6B6B6;
+}
 
 
 
