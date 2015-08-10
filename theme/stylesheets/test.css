@@ -12,23 +12,19 @@ h1 {
   text-align: center;
 }
 
-.accordion dl { border: 1px solid #222; }
+.accordion dl { }
 
 .accordion dl:after {
-  content: "";
-  display: block;
-  height: 1em;
-  width: 100%;
-  background-color: #222;
+ 
 }
 
-.accordion dt > a {
+.accordion dt  > a {
   text-align: center;
   font-weight: 700;
-  padding: 2em;
+  padding: 0;
   display: block;
   text-decoration: none;
-  color: #fff;
+  color: #000;
   -webkit-transition: background-color 0.5s ease-in-out;
   -moz-transition: background-color 0.5s ease-in-out;
   transition: background-color 0.5s ease-in-out;
@@ -49,45 +45,49 @@ h1 {
 }
 .accordion dd  p {
   padding: 0;
-  margin: 15px;
+  margin: 0px;
 }
 
 .accordion {
   width:300px;
-  background-color: #222;
+  background-color: #f7f7f7;
   
 }
 
 .container {
   max-width: 960px;
   margin: 0 auto;
-  padding: 2em 0 2em 0;
+  padding: 0;
 }
 
 .accordionTitle {
-  background-color: #333;
-  border-bottom: 1px solid #222;
+  background-color: #f7f7f7;
+
 }
 
 .accordionTitle:before {
-  content: ">";
-  font-size: 1.5em;
-  line-height: 0.5em;
+  background-image: url("../images/groupe.svg");
+  content: '';
+  height:25px;
+  width:25px;
+  background-size: 25px;
+  
   float: left;
   -moz-transition: -moz-transform 0.3s ease-in-out;
   -o-transition: -o-transform 0.3s ease-in-out;
   -webkit-transition: -webkit-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
+  
 }
 
-.accordionTitle:hover { background-color: #222; }
+.accordionTitle:hover { background-color: #f7f7f7; }
 
-.accordionTitleActive { background-color: #222; }
+.accordionTitleActive { background-color: #f7f7f7; }
 
 .accordionTitleActive:before {
-  -webkit-transform: rotate(450deg);
-  -moz-transform: rotate(450deg);
-  transform: rotate(450deg);
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  transform: rotate(360deg);
 }
 
 .accordionItem {

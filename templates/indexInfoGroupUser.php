@@ -9,7 +9,9 @@
 				
 				<div class="element-text">
 					<div class="element-title">Prenom nom</div>
-					<div class="element-preview">useless info</div></div></div>
+					<div class="element-preview">useless info</div>
+				</div>
+			</div>
 			 -->
 
 
@@ -20,7 +22,11 @@
 // echo '<div class="group">';
 // <img src="'.$CONSTANTES['cheminImages'].'iconeGroupe.png" alt="Groupe" title="groupe" width="25px"/>
 // <img src="'.$CONSTANTES['cheminImages'].'boutonRemove.png" title="Supprimer le groupe" alt="Supprimer le groupe" width="15px"/> <a href="" class="right"></a>
-echo '<dt><a class="accordionTitle" href="#"><strong>'.$infoGroupes[$nbgroup]['cn'][0].'</strong></a></dt>'; // (Nom de domaine complet : <em>'.ldap_dn2ufn($infoGroupes[$nbgroup]['dn']).'</em>)';
+echo '<dt><a href="bla" class="deleteGroupe"><img src="'.$CONSTANTES['cheminImages'].'deleteGroupe.svg" alt="Supprimer Groupe" title="Supprimer Groupe" width="25px"/></a><a class="accordionTitle" href="#">';
+if($nbgroup > 0 ) echo '<span href="yoyo" title="Modifier ce groupe">';
+echo '<strong>'.$infoGroupes[$nbgroup]['cn'][0].'</strong>';
+if($nbgroup > 0 ) echo '</span>';
+echo '</a></dt>';
 echo "\n";
 echo '<dd class="accordionItem accordionItemCollapsed">';
 // On affiche maintenant les utilisateurs qui appartiennent au groupe avec leurs données respectives 
@@ -35,8 +41,7 @@ for($nbusers=0;$nbusers<$infoUsers['count'];$nbusers++)
 		echo "\n";
 		echo '<strong>'.$infoUsers[$nbusers]['givenname'][0].' '.$infoUsers[$nbusers]['sn'][0].'</strong>';
 		echo "\n";
-		if($nbgroup == 0) echo '<a href="" class="right"><img src="'.$CONSTANTES['cheminImages'].'boutonRemove.png" title="Supprimer l\'utilisateur" alt="Supprimer l\'utilisateur" width="15px" /></a>';
-		else echo '<a href="" class="right"><img src="'.$CONSTANTES['cheminImages'].'kick2.png" title="Enlever du groupe" alt="Enlever du groupe" width="15px"/></a>';
+		if($nbgroup > 0) echo '<a href="" class="right"><img src="'.$CONSTANTES['cheminImages'].'removeUser.svg" title="Enlever du groupe" alt="Enlever du groupe" width="15px"/></a>';
 		echo "\n";
 		
 		echo '</p>';	

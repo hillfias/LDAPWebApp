@@ -1,6 +1,6 @@
 <div class="gene">
 <?php
-echo '<a href=""><img src="'.$CONSTANTES['cheminImages'].'boutonPlus.png"  alt="Ajouter un groupe" title="Ajouter un groupe" width="15px"/></a>';
+echo '<a href=""><img src="'.$CONSTANTES['cheminImages'].'addGroupe.svg" style="margin-right:5px;margin-top:5px;background:white;-moz-border-radius: 13px;-webkit-border-radius: 13px;border-radius: 13px;" alt="Ajouter un groupe" title="Ajouter un groupe" width="25px"/></a>';
 echo '<form name="supportform" method="post" action=""><input type="hidden" name="supporttype" /><a href="javascript:getsupport(\'groupe\')">Groupe';
 
 if($infoGroupes['count'] == 0) echo ' : 0';
@@ -25,7 +25,7 @@ else
 ?>
 
 <a href="">
-<?php echo '<img src="'.$CONSTANTES['cheminImages'].'boutonPlus.png" title="Ajouter un utilisateur" alt="Ajouter un utilisateur" width="15px"/>';
+<?php echo '<img src="'.$CONSTANTES['cheminImages'].'addUser.svg" style="margin-left:5px;margin-top:5px;background:white;-moz-border-radius: 13px;-webkit-border-radius: 13px;border-radius: 13px;" title="Ajouter un utilisateur" alt="Ajouter un utilisateur" width="25px"/>';
 ?>
 </a>
 </div>

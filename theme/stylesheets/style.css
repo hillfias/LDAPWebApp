@@ -84,30 +84,26 @@ background : #222;
 /*menu gauche */
 .group
 {
-
-color: #ccc;
+color: #000;
 padding-top:10px;
 padding-left:50px;
 margin-left:-20px;
 }
+.group > strong
+{
+margin-bottom:10px;
+display:block;
+}
 .user
 {
-margin-top:10px;
-margin-left:40px;
+margin-bottom:-20px;
 }
 .group img
 {
 margin-left:10px;
 margin-right:10px;
 }
-.group > p
-{
 
-padding-bottom:5px;
-margin-bottom:15px;
-text-align:left;
-margin-left:20px;
-}
 .gene
 {
 background : #333;
@@ -134,6 +130,26 @@ color: #B6B6B6;
 overflow:visible;
 }
 
-
+.deleteGroupe
+{
+float:right;
+position:relative;
+z-index:110;
+}
+.group:before {
+  background-image: url("../images/groupe.svg");
+  content: '';
+  height:25px;
+  width:25px;
+  background-size: 25px;
+  margin-right:10px;
+  
+  float: left;
+  -moz-transition: -moz-transform 0.3s ease-in-out;
+  -o-transition: -o-transform 0.3s ease-in-out;
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  
+}
 
 
