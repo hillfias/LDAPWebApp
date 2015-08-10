@@ -30,7 +30,7 @@ flex-direction : column;
 	border-left : 1px solid #e8e8e8;
 	flex : 1;
 	min-height : 150pt;
-	max-height : 400pt;	
+	
 	display : flex;
 	flex-direction:column;
 	padding-left:20px;
@@ -129,7 +129,10 @@ form[name="supportform"] a
 color: #B6B6B6;
 }
 
-
+.main-panel
+{
+overflow:visible;
+}
 
 
 

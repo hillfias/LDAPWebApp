@@ -21,7 +21,32 @@ $infoUsers = search($ds,'objectclass=posixAccount');
 include($CONSTANTES['cheminVue'].'indexContainer.php');
 include($CONSTANTES['cheminVue'].'indexInfoGene.php');
 // VUE ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-																
+										
+if(isset($_POST['supporttype']) AND !empty($_POST['supporttype']) AND $_POST['supporttype'] == 'groupe')
+{
+	$_SESSION['supporttype'] = 'groupe';
+	header('Location: '.$nomfichier.'.php');
+}
+elseif(isset($_POST['supporttype']) AND !empty($_POST['supporttype']) AND $_POST['supporttype'] == 'users')
+{
+	$_SESSION['supporttype'] = 'users';
+	header('Location: '.$nomfichier.'.php');
+}
+elseif(isset($_SESSION['supporttype']) AND !empty($_SESSION['supporttype']) AND $_SESSION['supporttype'] == 'groupe')
+{
+	$pass = 'groupe';
+}
+elseif(isset($_SESSION['supporttype']) AND !empty($_SESSION['supporttype']) AND $_SESSION['supporttype'] == 'users')
+{
+	$pass = 'users';
+}
+
+
+
+
+
+
+										
 // Nous avons maintenant terminé d'afficher les informations de bases et nous allons travailler de façon hiérarchique en affichant groupe par groupe et en indiquant à chaque fois quel(s) utilisateur(s) appartien(es/nent) à ces groupe(s)
 for($nbgroup=0;$nbgroup<$infoGroupes['count'];$nbgroup++)
 {
@@ -33,14 +58,11 @@ for($nbgroup=0;$nbgroup<$infoGroupes['count'];$nbgroup++)
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	// VUE ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	if(isset($_POST['supporttype']) AND !empty($_POST['supporttype']) AND $_POST['supporttype'] == 'groupe')
-	{
-		include($CONSTANTES['cheminVue'].'indexInfoGroupUser.php');
-	}
+	if(!empty($pass) AND $pass == 'groupe')
+	include($CONSTANTES['cheminVue'].'indexInfoGroupUser.php');
 	else
-	{
-		include($CONSTANTES['cheminVue'].'indexInfoUser.php');
-	}
+	include($CONSTANTES['cheminVue'].'indexInfoUser.php');
+	
 	
 	// VUE ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

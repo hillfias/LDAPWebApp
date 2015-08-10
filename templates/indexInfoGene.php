@@ -13,14 +13,14 @@ else
 	echo '</a> : '.$infoGroupes['count'];
 }
 echo ' | <a href="javascript:getsupport(\'users\')">';
-if($infoUsers['count'] == 0) echo ' Utilisateur</a> : 0';
+if($infoUsers['count'] == 0) echo ' Utilisateur</a></form> : 0';
 elseif ($infoUsers['count'] > 1)
 {
-	echo ' Utilisateurs</a> : '.$infoUsers['count'];
+	echo ' Utilisateurs</a></form> : '.$infoUsers['count'];
 }
 else
 {
-	echo ' Utilisateur</a> : '.$infoUsers['count'];
+	echo ' Utilisateur</a></form> : '.$infoUsers['count'];
 }
 ?>
 

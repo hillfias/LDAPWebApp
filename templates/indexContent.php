@@ -15,6 +15,7 @@
 				<li><?php echo '<img src="'.$CONSTANTES['cheminImages'].'kick2.png" alt="Enlever un utilisateur" title="Enlever un utilisateur" width="30px"/>'; ?>Enlever un utilisateur d'un groupe</li>
 			</ul>
 			</p>
+			
 		</div>
 	</div>
 </div>
