@@ -1,13 +1,13 @@
 <?php
 echo '<p>';
 $true = false;
+
+echo '<img class="imageprofil" src="data:image/jpeg;base64,'.base64_encode($infoUsers[0]['jpegphoto'][0]).'" width="25px" />';
 if(strpos($membresGroupe[0]['owner'][0],$membresGroupe[0]['memberuid'][$nbusers]))
 {
-	echo '<img class="imageprofil" src="'.$CONSTANTES['cheminImages'].'admin.svg" width="25px"; />';
+	echo '<img  src="'.$CONSTANTES['cheminImages'].'admin.svg" width="20px" style="position:relative;left:-25px;margin-right:-20px;" />';
 	$true = true;
 }
-else 
-echo '<img class="imageprofil" src="data:image/jpeg;base64,'.base64_encode($infoUsers[0]['jpegphoto'][0]).'" width="25px" />';
 echo "\n";
 echo '<strong>'.$infoUsers[0]['givenname'][0].' '.$infoUsers[0]['sn'][0].'</strong>';
 echo "\n";
