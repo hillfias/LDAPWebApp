@@ -37,7 +37,7 @@ else
 	$ds = connectionLDAP();
 	
 	// On récupère les informations sur l'utilisateur qui souhaite se connecter
-	$info = search($ds,'cn='.$_POST['nom']);
+	$info = search($ds,'cn='.$_POST['nom'],array('userpassword'));
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	// Si l'utilisateur existe
@@ -65,7 +65,7 @@ else
 			else
 			{
 				// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-				$infoGroupes = search($ds,'objectclass=posixGroup');
+				$infoGroupes = search($ds,'objectclass=posixGroup',array('owner'));
 				// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 				for($nbgroup=0;$nbgroup<$infoGroupes['count'];$nbgroup++)
@@ -74,7 +74,7 @@ else
 					// On récupère les infos sur l'administrateur du groupe
 					preg_match('#^cn=([a-z-]+),#',$infoGroupes[$nbgroup]['owner'][0],$owner);
 					
-					$infoAdmin = search($ds,'cn='.$owner[1]);
+					$infoAdmin = search($ds,'cn='.$owner[1],array('userpassword'));
 					// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 					
 					// S'il est admin d'un groupe
