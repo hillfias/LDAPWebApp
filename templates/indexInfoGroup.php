@@ -6,7 +6,7 @@ echo '<a href="bla" class="deleteGroupe"><img src="'.$CONSTANTES['cheminImages']
 echo '<a href="bla" class="deleteGroupe"><img src="'.$CONSTANTES['cheminImages'].'addAdmin.svg" alt="Ajouter un administrateur pour ce groupe" title="Ajouter un administrateur pour ce groupe" width="25px"/></a>';
 
 
-echo '<a class="accordionTitle" href="#">';
+echo '<a class="accordionTitle" href="#" id="title'.$infoNbGroupes[$nbgroup]['cn'][0].'" onclick="request(\''.$infoNbGroupes[$nbgroup]['cn'][0].'\',readData);" >'; // TO DO ICI
 if($nbgroup > 0 ) echo '<span href="yoyo" title="Modifier ce groupe">';
 echo '<strong>'.$infoNbGroupes[$nbgroup]['cn'][0].'</strong>';
 if($nbgroup > 0 ) echo '</span>';
@@ -15,5 +15,5 @@ echo '</a>';
 
 echo '</dt>';
 echo "\n";
-echo '<dd class="accordionItem accordionItemCollapsed">';
+echo '<dd class="accordionItem accordionItemCollapsed" id="'.$infoNbGroupes[$nbgroup]['cn'][0].'">';
 ?>

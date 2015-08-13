@@ -31,7 +31,7 @@ function search($ds,$filter,$attributes)
 	// Nous allons commencer par afficher des informations de bases concernant le domaine auquel on est connecté et son administrateur
 	$dn = "dc=rBOX,dc=lan"; 			//Domaine
 	$filtre="($filter)";				//Filtre de recherche
-	$sr=ldap_search($ds, $dn, $filtre,$attributes);	//On effectue la recherche
+	$sr=ldap_search($ds, $dn, '('.$filter.')',$attributes);	//On effectue la recherche
 	if(!$sr)
 	{
 		echo '<p class="center red">Le serveur LDAP n\'a pas pu effectuer la recherche . Nous vous prions de nous excuser pour le désagrément.</p>';

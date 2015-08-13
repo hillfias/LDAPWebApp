@@ -37,7 +37,7 @@ else
 	$ds = connectionLDAP();
 	
 	// On récupère les informations sur l'utilisateur qui souhaite se connecter
-	$info = search($ds,'cn='.$_POST['nom'],array('userpassword'));
+	$info = search($ds,'cn='.$_POST['nom'],array('userpassword','cn'));
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	// Si l'utilisateur existe
@@ -56,6 +56,7 @@ else
 			// Selon son rang, il aura différents droits. On aimerait donc savoir s'il est admin ou administrateur d'un groupe (sinon c'est un simple membre et on connait ses droits)
 			
 			// S'il est admin
+			
 			if($info[0]['cn'][0] == 'admin')
 			{
 				$_SESSION ['statut'] = 'admin';

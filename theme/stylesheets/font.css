@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?4gm693');
-	src:url('fonts/icomoon.eot?#iefix4gm693') format('embedded-opentype'),
-		url('fonts/icomoon.ttf?4gm693') format('truetype'),
-		url('fonts/icomoon.woff?4gm693') format('woff'),
-		url('fonts/icomoon.svg?4gm693#icomoon') format('svg');
+	src:url('fonts/icomoon.eot?wefjpr');
+	src:url('fonts/icomoon.eot?#iefixwefjpr') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?wefjpr') format('truetype'),
+		url('fonts/icomoon.woff?wefjpr') format('woff'),
+		url('fonts/icomoon.svg?wefjpr#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -23,24 +23,57 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-chat:before {
+.icon-remove-user:before {
+	content: "\e603";
+}
+.icon-remove-admin:before {
+	content: "\e604";
+}
+.icon-groupe:before {
+	content: "\e605";
+}
+.icon-delete-user:before {
+	content: "\e60c";
+}
+.icon-delete-group:before {
+	content: "\e60d";
+}
+.icon-admin:before {
+	content: "\e60e";
+}
+.icon-add-user:before {
+	content: "\e60f";
+}
+.icon-add-to-list:before {
+	content: "\e611";
+}
+.icon-add-group:before {
+	content: "\e612";
+}
+.icon-add-admin:before {
+	content: "\e613";
+}
+.icon-rchat:before {
 	content: "\e600";
 }
 .icon-logout:before {
 	content: "\e601";
 }
+.icon-group:before {
+	content: "\e602";
+}
 .icon-settings:before {
 	content: "\e994";
 }
-.icon-files:before {
+.icon-rfiles:before {
 	content: "\e925";
 }
-.icon-admin:before {
+.icon-radmin:before {
 	content: "\e972";
 }
-.icon-clients:before {
+.icon-rclients:before {
 	content: "\e976";
 }
-.icon-git:before {
+.icon-rgit:before {
 	content: "\eae2";
 }

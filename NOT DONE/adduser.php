@@ -8,7 +8,7 @@ if($_SESSION['statut'] == 'admin')
 	// On a besoin de récupérer les infos sur les groupes pour le formulaire/ pour ajouter un nouvel utilisateur
 	include($CONSTANTES['cheminModele'].'index.php');
 	$ds = connectionLDAP();
-	$infoGroupes = search($ds,'objectclass=posixGroup');
+	$infoGroupes = search($ds,'objectclass=posixGroup',array('cn'));
 	// On termine la connection au serveur
 	kill($ds);
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
