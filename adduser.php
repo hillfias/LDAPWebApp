@@ -1,12 +1,12 @@
 <?php
-include('header.php');
+include('surroundings.php');
 
 // Si l'utilisateur est admin, il peut ajouter un nouvel utilisateur
 if($_SESSION['statut'] == 'admin')
 {
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// On a besoin de récupérer les infos sur les groupes pour le formulaire/ pour ajouter un nouvel utilisateur
-	include($CONSTANTES['cheminModele'].'index.php');
+	
 	$ds = connectionLDAP();
 	$infoGroupes = search($ds,'objectclass=posixGroup',array('cn'));
 	// On termine la connection au serveur
@@ -222,4 +222,5 @@ if($_SESSION['statut'] == 'admin')
 	}
 }
 else echo '<p class="center red">Erreur : vous n\'avez pas les droits requis.</p>';
+include ('bot.php');
 ?>

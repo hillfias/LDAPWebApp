@@ -24,7 +24,7 @@ else
 }
 ?>
 
-<a href="">
+<a href="#" onclick="getAddUserPage();">
 <?php echo '<img src="'.$CONSTANTES['cheminImages'].'addUser.svg" style="margin-left:5px;margin-top:5px;background:white;-moz-border-radius: 13px;-webkit-border-radius: 13px;border-radius: 13px;" title="Ajouter un utilisateur" alt="Ajouter un utilisateur" width="25px"/>';
 ?>
 </a>

@@ -6,7 +6,7 @@ echo '<script type="text/javascript" language="javascript" src="'.$CONSTANTES['c
 <h3 class="center">Ajouter un nouvel utilisateur</h3>
 
 <!-- Début du formulaire -->
-<form method="post" action="" name="form" enctype="multipart/form-data" class="spe">
+<form method="post" action="adduser.php" name="form" enctype="multipart/form-data" class="spe">
 <fieldset>
 
 	<legend>Ajouter un utilisateur :</legend>

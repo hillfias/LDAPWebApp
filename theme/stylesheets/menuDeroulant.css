@@ -97,7 +97,6 @@ h1 {
 @media all {
 
 .accordionItem {
-  max-height: 50em;
   -moz-transition: max-height 1s;
   -o-transition: max-height 1s;
   -webkit-transition: max-height 1s;
@@ -107,7 +106,6 @@ h1 {
 @media screen and (min-width: 48em) {
 
 .accordionItem {
-  max-height: 15em;
   -moz-transition: max-height 0.5s;
   -o-transition: max-height 0.5s;
   -webkit-transition: max-height 0.5s;

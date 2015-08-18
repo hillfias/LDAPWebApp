@@ -37,13 +37,19 @@ elseif(isset($_SESSION['supporttype']) AND !empty($_SESSION['supporttype']) AND 
 	$pass = 'users';
 }
 
+echo '<script language="JavaScript" type="text/javascript" src="'.$CONSTANTES['cheminJs'].'autoSubmit.js"></script>';
+echo '<script language="JavaScript" type="text/javascript" src="'.$CONSTANTES['cheminJs'].'getAddUserPage.js"></script>';
+
 // On affiche soit les groupes soit les utilisateurs
 
 if(!empty($pass) AND $pass == 'groupe')
 {
 	
 	echo '<script type="text/javascript" src="'.$CONSTANTES['cheminJs'].'menuDeroulantPartiel.js"></script>';
-	echo '<script type="text/javascript" src="'.$CONSTANTES['cheminJs'].'ajax_menuDeroulantSuite.js"></script>';
+	echo '<script type="text/javascript" src="'.$CONSTANTES['cheminJs'].'getUsersForGroup.js"></script>';
+	
+	
+
 	
 	
 	for($nbgroup=0;$nbgroup<$infoNbGroupes['count'];$nbgroup++)
@@ -89,4 +95,11 @@ else
 	include($CONSTANTES['cheminVue'].'indexInfoUserFermeture.php');
 	// VUE ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 }
+
+kill($ds);
 ?>
+	 </dl>
+  </div>
+		</div>
+		<div class="main-panel" id="main-panel"><!--large-9 columns-->
+			<!--main panel, ici c'est les commandes et tout ... -->

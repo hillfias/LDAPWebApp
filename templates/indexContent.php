@@ -1,8 +1,4 @@
-		 </dl>
-  </div>
-		</div>
-		<div class="main-panel" id=""><!--large-9 columns-->
-			<!--main panel, ici c'est les commandes et tout ... -->
+	
 			<h1>Mini-tutoriel d'administration</h1>
 			<p>Bienvenue, Admin ! Vous avez le choix entre un menu 'Groupes' et un menu 'Utilisateurs' (Il suffit de cliquer sur respectivement 'Groupes' ou 'Utilisateurs' pour changer de menu).</p>
 			
@@ -34,6 +30,4 @@
 			
 			</p>
 			
-		</div>
-	</div>
-</div>
+		

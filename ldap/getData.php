@@ -30,11 +30,11 @@ if ($group) {
 		echo '
 		{
 		photo: "'.base64_encode($infoUsers[0]['jpegphoto'][0]).'",';
-		$true = false;
+		$isAdmin = false;
 		if(strpos($membresGroupe[0]['owner'][0],$membresGroupe[0]['memberuid'][$nbusers]))
 		{
 			echo 'yes: "<img  src=\"'.$CONSTANTES['cheminImages'].'admin.svg\" width=\"20px\" style=\"position:relative;left:-25px;margin-right:-20px;\" />",';
-			$true = true;
+			$isAdmin = true;
 		}
 		else echo 'yes: "",';
 		
@@ -45,7 +45,7 @@ if ($group) {
 		if($group != 'all') echo 'yes2: "<a href=\"\" class=\"right\"><img src=\"'.$CONSTANTES['cheminImages'].'removeUser.svg\" title=\"Enlever du groupe\" alt=\"Enlever du groupe\" width=\"15px\"/></a>",';
 		else echo 'yes2: "<a href=\"\" class=\"right\"><img src=\"'.$CONSTANTES['cheminImages'].'deleteUser.svg\" title=\"Supprimer l\'utilisateur\" alt=\"Supprimer l\'utilisateur\" width=\"15px\"/></a>",';
 		
-		if($true) echo 'yes3: "<a href=\"\" class=\"right\"><img src=\"'.$CONSTANTES['cheminImages'].'removeAdmin.svg\" title=\"Enlever l\'admin du groupe\" alt=\"Enlever l\'admin du groupe\" width=\"15px\"/></a>"';
+		if($isAdmin) echo 'yes3: "<a href=\"\" class=\"right\"><img src=\"'.$CONSTANTES['cheminImages'].'removeAdmin.svg\" title=\"Enlever l\'admin du groupe\" alt=\"Enlever l\'admin du groupe\" width=\"15px\"/></a>"';
 		else echo 'yes3: ""';
 		echo '
 		}';
