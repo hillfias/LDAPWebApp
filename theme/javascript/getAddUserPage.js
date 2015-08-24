@@ -9,9 +9,9 @@ function getAddUserPage()
 		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0))
 		{
 			
-			var jsondata=eval("("+xhr.responseText+")"); //retrieve result as an JavaScript object
+			var mydata=eval("("+xhr.responseText+")"); //retrieve result as an JavaScript object
 			
-			var mydata=jsondata.items;
+			
 			
 			var head = document.getElementsByTagName("head")[0];
 			
@@ -77,7 +77,7 @@ function getAddUserPage()
 			output+= '<a onclick="javascript:checkAll(\'form\', false);" href="javascript:void();">tout décocher</a>';
 			output+= '<br />';
 			
-			for (var i=0; i<mydata.length; i++)
+			for (var i=1; i<mydata.length; i++)
 			{
 				
 				output+='<label for="'+mydata[i].name+'">Clicquer pour cocher le groupe \''+mydata[i].name+'\'</label><input type="checkbox" name="'+mydata[i].name+'" id="'+mydata[i].name+'" /><br />';
@@ -93,7 +93,7 @@ function getAddUserPage()
 		}
 	};
 	
-	xhr.open("POST", "api/APICommand.php", true);
+	xhr.open("POST", "api/getGroups.php", true);
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-	xhr.send("action=getAddUserPage");
+	xhr.send();
 }

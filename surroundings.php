@@ -39,7 +39,8 @@ elseif(isset($_SESSION['supporttype']) AND !empty($_SESSION['supporttype']) AND 
 
 echo '<script language="JavaScript" type="text/javascript" src="'.$CONSTANTES['cheminJs'].'autoSubmit.js"></script>';
 echo '<script language="JavaScript" type="text/javascript" src="'.$CONSTANTES['cheminJs'].'getAddUserPage.js"></script>';
-
+echo '<script language="JavaScript" type="text/javascript" src="'.$CONSTANTES['cheminJs'].'getAddGroupPage.js"></script>';
+echo '<script language="JavaScript" type="text/javascript" src="'.$CONSTANTES['cheminJs'].'deleteUser.js"></script>';
 // On affiche soit les groupes soit les utilisateurs
 
 if(!empty($pass) AND $pass == 'groupe')
@@ -83,7 +84,7 @@ else
 	for($nbusers=0;$nbusers<$membresGroupe[0]['memberuid']['count'];$nbusers++)
 	{
 		// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-		$infoUsers = search($ds,'&(objectclass=posixAccount)(cn='.$membresGroupe[0]['memberuid'][$nbusers].')',array('jpegphoto','givenname','sn'));
+		$infoUsers = search($ds,'&(objectclass=posixAccount)(cn='.$membresGroupe[0]['memberuid'][$nbusers].')',array('jpegphoto','givenname','sn','cn'));
 		// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 		// VUE ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

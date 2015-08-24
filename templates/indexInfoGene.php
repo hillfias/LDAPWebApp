@@ -1,6 +1,6 @@
 <div class="gene">
 <?php
-echo '<a href=""><img src="'.$CONSTANTES['cheminImages'].'addGroupe.svg" style="margin-right:5px;margin-top:5px;background:white;-moz-border-radius: 13px;-webkit-border-radius: 13px;border-radius: 13px;" alt="Ajouter un groupe" title="Ajouter un groupe" width="25px"/></a>';
+echo '<span class="icon-add-group" onclick="getAddGroupPage();"></span>';
 echo '<form name="supportform" method="post" action=""><input type="hidden" name="supporttype" /><a href="javascript:getsupport(\'groupe\')">Groupe';
 
 if($infoNbGroupes['count'] == 0) echo ' : 0';

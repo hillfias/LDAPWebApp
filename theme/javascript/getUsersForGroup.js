@@ -43,21 +43,42 @@ function getUsersForGroup(group) {
 				if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0))
 				{
 					
-					var jsondata=eval("("+xhr.responseText+")"); //retrieve result as an JavaScript object
+					var mydata=eval("("+xhr.responseText+")"); //retrieve result as an JavaScript object
 					
-					var mydata=jsondata.items;
 					// on affiche les données et on toggle le menu
 					
 					var output='';
-					for (var i=0; i<mydata.length; i++)
+					if(mydata.length == 0)
 					{
 						output+='<p>';
-						output+='<img class="imageprofil" src="data:image/jpeg;base64,'+ mydata[i].photo +'" width="25px" />';
-						output+=mydata[i].yes;
-						output+='<strong>'+mydata[i].forname+' '+mydata[i].lastname+'</strong>';
-						output+=mydata[i].yes2;
-						output+=mydata[i].yes3;
+						output+='Erreur : '+mydata.erreur;
 						output+='</p>';
+					}
+					else
+					{
+						for (var i=0; i<mydata.length; i++)
+						{
+							output+='<p>';
+							output+='<img class="imageprofil" src="data:image/jpeg;base64,'+ mydata[i].photo +'" width="25px" />';
+							if(mydata[i].isAdmin == "true")
+							{
+								output+= '<img src="theme/images/admin.svg" width="20px" style="position:relative;left:-25px;margin-right:-20px;" />';
+							}
+							output+='<strong>'+mydata[i].forname+' '+mydata[i].lastname+'</strong>';
+							if(mydata[i].isRemovable == "true")
+							{
+								output+= '<a href="" class="right"><img src="theme/images/removeUser.svg" title="Enlever du groupe" alt="Enlever du groupe" width="15px"/></a>';
+							}
+							else
+							{
+								output+= '<a href="" class="right" onclick="deleteUser(\''+mydata[i].pseudo+'\'); return false;"><img src="theme/images/deleteUser.svg" title="Supprimer l\'utilisateur" alt="Supprimer l\'utilisateur" width="15px"/></a>';
+							}
+							if(mydata[i].isAdminRemovable == "true")
+							{
+								output+= '<a href="" class="right"><img src="theme/images/removeAdmin.svg" title="Enlever l\'admin du groupe" alt="Enlever l\'admin du groupe" width="15px"/></a>';
+							}
+							output+='</p>';
+						}
 					}
 				   
 					document.getElementById(group).innerHTML=output;
@@ -103,9 +124,9 @@ function getUsersForGroup(group) {
 				}
 			};
 			
-			xhr.open("POST", "api/APICommand.php", true);
+			xhr.open("POST", "api/getUsersForGroup.php", true);
 			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-			xhr.send("action=getUsersForGroup&attributes=jpegphotoSTOPgivennameSTOPsn&group=" + group);
+			xhr.send("attributes=jpegphotoSTOPgivennameSTOPsnSTOPcn&group=" + group);
 			
 		}
 
