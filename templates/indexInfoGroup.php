@@ -1,10 +1,10 @@
 <?php
 echo '<dt>';
 if($nbgroup > 0 )
-echo '<a href="bla" class="deleteGroupe"><img src="'.$CONSTANTES['cheminImages'].'deleteGroupe.svg" alt="Supprimer Groupe" title="Supprimer Groupe" width="25px"/></a>';
+echo '<a href="#" class="deleteGroupe icon-delete-group"></a>';
 else
 echo '<div id="spaceImage"></div>';
-echo '<a href="bla" class="deleteGroupe"><img src="'.$CONSTANTES['cheminImages'].'addAdmin.svg" alt="Ajouter un administrateur pour ce groupe" title="Ajouter un administrateur pour ce groupe" width="25px"/></a>';
+echo '<a href="#" class="deleteGroupe icon-add-admin"></a>';
 
 
 echo '<a class="accordionTitle" href="#" id="title'.$infoNbGroupes[$nbgroup]['cn'][0].'" onclick="getUsersForGroup(\''.$infoNbGroupes[$nbgroup]['cn'][0].'\');" >';

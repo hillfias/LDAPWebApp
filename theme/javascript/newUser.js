@@ -14,17 +14,22 @@ function newUser()
 	// progress bar
 		xhr.upload.addEventListener("progress", function(e) {
 			var pc = 100 - (e.loaded / e.total) * 100;
-			progress.style.backgroundPosition = pc + "% 0";
+			if(document.getElementById("progressSpace"))
+			{
+				progress.style.backgroundPosition = pc + "% 0";
+			}
 		}, false);
 	
 	
 	xhr.onreadystatechange = function()
 	{
+		
 	
-		if (xhr.readyState == 4)
+		if (xhr.readyState == 4 && document.getElementById("progressSpace"))
 		{
 			progress.className = (xhr.status == 200 ? "success" : "failure");
-		}
+		} 
+	
 		
 		if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0))
 		{
@@ -34,6 +39,7 @@ function newUser()
 			
 		
 			var mess = xhr.responseText; //retrieve result as an JavaScript object
+			
 			if (mess == 'L\'utilisateur a été ajouté mais certaines erreures persistent. Un message sera envoyé à l\'administrateur.' || mess == 'L\'utilisateur a été correctement ajouté.')
 			{
 				if (confirm('Voulez-vous ajouter un nouvel utilisateur ?'))
@@ -164,7 +170,6 @@ function newUser()
 		
 		// Si celles-ci sont non vides on les ajoutent et on regarde si les autres existent
 		var formData = new FormData();
-		formData.append('action', 'newUser');
 		formData.append('nom', nom);
 		formData.append('prenom', prenom);
 		formData.append('mail', mail);
@@ -216,7 +221,7 @@ function newUser()
 					div.setAttribute("id", "progressSpace");
 
 					
-
+			
 					xhr.open("POST", "api/newUser.php", true);
 					xhr.send(formData);
 				}
@@ -277,6 +282,7 @@ function newUser()
 		}
 		else
 		{
+
 			xhr.open("POST", "api/newUser.php", true);
 			xhr.send(formData);
 		}

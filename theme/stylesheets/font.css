@@ -23,56 +23,147 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.icon-remove-user:before {
-	content: "\e603";
-}
-.icon-remove-admin:before {
-	content: "\e604";
-}
-.icon-groupe:before {
-	content: "\e605";
-}
-.icon-delete-user:before {
-	content: "\e60c";
-}
-.icon-delete-group:before {
-	content: "\e60d";
-}
-.icon-admin:before {
-	content: "\e60e";
-}
-.icon-add-user:before {
-	content: "\e60f";
-}
-.icon-add-to-list:before {
-	content: "\e611";
-}
-.icon-add-group:before {
-	content: "\e612";
-}
-.icon-add-group
+
+/* global stuff for top menu */
+
+.icon-add-group, .icon-add-user
 {
-opacity:0.6;
--moz-border-radius: 9px;
--webkit-border-radius: 9px;
-border-radius: 9px;
+-moz-border-radius: 12px;
+-webkit-border-radius: 12px;
+border-radius: 12px;
 cursor: pointer;
-background:white;
-width:18px;
-height:18px;
+background:rgb(200,200,200);
+width:25px;
+height:25px;
 display:inline-block;
 margin-right:10px;
 margin-top:5px;
-transition: opacity 0.5s ease 0s;
+font-size:20px;
+color:rgb(30,30,30) !important;
+opacity:1;
+transition: color ease 0s, background ease 2s;
 }
-.icon-add-group:hover
+
+.icon-add-group:hover, .icon-add-user:hover
 {
 color:black !important;
+background:white;
 opacity:1;
 }
+
+/* global stuff in menu */
+
+.icon-delete-group, .icon-add-admin, .icon-delete-user, .icon-remove-user, .icon-remove-admin
+{
+cursor: pointer;
+width:25px;
+height:25px;
+display:inline-block;
+margin-right:5px;
+margin-top:5px;
+opacity:1;
+font-size:25px;
+font-weight:100 !important;
+color:rgb(100,100,100) !important;
+float:right;
+}
+
+.icon-delete-group:hover, .icon-add-admin:hover, .icon-delete-user:hover, .icon-remove-user:hover, .icon-remove-admin:hover
+{
+color:black !important;
+}
+
+/* specifics */
+
+.icon-add-group:before {
+	content: "\e612";
+}
+
+
+.icon-add-user:before {
+	content: "\e60f";
+}
+.icon-add-user
+{
+ margin-left:5px;
+}
+
+
+/* NE FONCTIONNE PAS
+.icon-groupe:before {
+	content: "\e605";
+}
+.icon-groupe
+{
+background:none;
+}
+*/
+
+
+.icon-delete-group:before {
+	content: "\e60d";
+}
+
+
 .icon-add-admin:before {
 	content: "\e613";
 }
+
+
+.icon-delete-user:before {
+	content: "\e60c";
+}
+.icon-delete-user {
+	width:15px;
+	height:15px;
+	font-size:15px;
+}
+
+.icon-remove-user:before {
+	content: "\e603";
+}
+.icon-remove-user {
+	width:15px;
+	height:15px;
+	font-size:15px;
+}
+
+
+.icon-remove-admin:before {
+	content: "\e604";
+}
+.icon-remove-admin {
+	width:15px;
+	height:15px;
+	font-size:15px;
+}
+
+
+
+
+
+
+
+
+.icon-admin:before {
+	content: "\e60e";
+}
+.icon-admin-menu {
+	width:20px;
+	height:20px;
+	font-size:20px;
+	position:relative;
+	left:-25px;
+	margin-right:-20px;
+	top:5px;
+}
+
+
+
+
+
+
+
 .icon-rchat:before {
 	content: "\e600";
 }

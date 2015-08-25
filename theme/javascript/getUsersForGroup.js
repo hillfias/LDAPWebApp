@@ -62,20 +62,20 @@ function getUsersForGroup(group) {
 							output+='<img class="imageprofil" src="data:image/jpeg;base64,'+ mydata[i].photo +'" width="25px" />';
 							if(mydata[i].isAdmin == "true")
 							{
-								output+= '<img src="theme/images/admin.svg" width="20px" style="position:relative;left:-25px;margin-right:-20px;" />';
+								output+= '<span class="icon-admin icon-admin-menu"></span>';
 							}
 							output+='<strong>'+mydata[i].forname+' '+mydata[i].lastname+'</strong>';
 							if(mydata[i].isRemovable == "true")
 							{
-								output+= '<a href="" class="right"><img src="theme/images/removeUser.svg" title="Enlever du groupe" alt="Enlever du groupe" width="15px"/></a>';
+								output+= '<a href="" class="right icon-remove-user"></a>';
 							}
 							else
 							{
-								output+= '<a href="" class="right" onclick="deleteUser(\''+mydata[i].pseudo+'\'); return false;"><img src="theme/images/deleteUser.svg" title="Supprimer l\'utilisateur" alt="Supprimer l\'utilisateur" width="15px"/></a>';
+								output+= '<a href="" class="right icon-delete-user" onclick="deleteUser(\''+mydata[i].pseudo+'\'); return false;"></a>';
 							}
 							if(mydata[i].isAdminRemovable == "true")
 							{
-								output+= '<a href="" class="right"><img src="theme/images/removeAdmin.svg" title="Enlever l\'admin du groupe" alt="Enlever l\'admin du groupe" width="15px"/></a>';
+								output+= '<a href="" class="right icon-remove-admin"></a>';
 							}
 							output+='</p>';
 						}

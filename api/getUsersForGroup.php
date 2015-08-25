@@ -49,7 +49,7 @@ if ($group)
 		if($group != 'all') $infoUser['isRemovable'] = "true";
 		else $infoUser['isRemovable'] = "false";
 		
-		if($infoUser['isAdmin'] == "true") $infoUser['isAdminRemovable'] = "false";
+		if($infoUser['isAdmin'] == "true") $infoUser['isAdminRemovable'] = "true";
 		else $infoUser['isAdminRemovable'] = "false";
 		
 		array_push($infos,$infoUser);
