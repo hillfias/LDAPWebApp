@@ -1,6 +1,6 @@
 <div class="gene">
 <?php
-echo '<span class="icon-add-group" onclick="getAddGroupPage();"></span>';
+echo '<span class="icon-add-group" title="Ajouter un nouveau groupe" onclick="getAddGroupPage();"></span>';
 echo '<form name="supportform" method="post" action=""><input type="hidden" name="supporttype" /><a href="javascript:getsupport(\'groupe\')">Groupe';
 
 if($infoNbGroupes['count'] == 0) echo ' : 0';
@@ -24,7 +24,7 @@ else
 }
 ?>
 
-<span class="icon-add-user" onclick="getAddUserPage();">
+<span class="icon-add-user" title="Ajouter un nouvel utilisateur" onclick="getAddUserPage();">
 
 </span>
 </div>

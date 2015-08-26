@@ -1,12 +1,12 @@
 <?php
 header("Content-Type: text/plain");
 /**
- * delete a user
- * @param : user name(pseudo) [required]
+ * delete a group
+ * @param : group name [required]
  * @return : success/fail message (txt)
  * */
  
-if(!empty($_POST['user']))
+if(!empty($_POST['group']))
 {
 	
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -15,36 +15,14 @@ if(!empty($_POST['user']))
 	$ds = connectionLDAP();
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	$name = $_POST['user'];
-	$dn="cn=$name,ou=users,dc=rBOX,dc=lan";
+	$name = $_POST['group'];
+	$dn="cn=$name,ou=groups,dc=rBOX,dc=lan";
 
 	 // Supression de l'entrée de l'annuaire
 	 $r=ldap_delete($ds, $dn);
 	 
-	 // to do : supprimer l'utilisateur de tous les groupes auxquels il appartient
-	 $Groupes = search($ds,'objectclass=posixGroup',array('memberUid','owner','cn'));
-	for($nbgroupes=0;$nbgroupes<$Groupes['count'];$nbgroupes++)
-	{
-		for($nbusers=0;$nbusers<$Groupes[$nbgroupes]['memberuid']['count'];$nbusers++)
-		{
-			if($name == $Groupes[$nbgroupes]['memberuid'][$nbusers])
-			{
-				$dn="cn=".$Groupes[$nbgroupes]['cn'][0].",ou=groups,dc=rBOX,dc=lan";
-				$entry['memberuid'] = $name;
-				ldap_mod_del($ds,$dn,$entry);
-			}
-		}
-	}
-	 
-	 
-	 
-	 
-	 
-	 
-	 if($r) echo 'L\'utilisateur a été correctement supprimé.';
+	 if($r) echo 'Le groupe a été correctement supprimé.';
 	 else echo 'Données non conformes.';
-
-	
-	
+	 
 	kill($ds);
 }

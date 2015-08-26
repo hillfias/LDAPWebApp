@@ -41,6 +41,8 @@ echo '<script language="JavaScript" type="text/javascript" src="'.$CONSTANTES['c
 echo '<script language="JavaScript" type="text/javascript" src="'.$CONSTANTES['cheminJs'].'getAddUserPage.js"></script>';
 echo '<script language="JavaScript" type="text/javascript" src="'.$CONSTANTES['cheminJs'].'getAddGroupPage.js"></script>';
 echo '<script language="JavaScript" type="text/javascript" src="'.$CONSTANTES['cheminJs'].'deleteUser.js"></script>';
+echo '<script language="JavaScript" type="text/javascript" src="'.$CONSTANTES['cheminJs'].'deleteGroup.js"></script>';
+echo '<script language="JavaScript" type="text/javascript" src="'.$CONSTANTES['cheminJs'].'kickUser.js"></script>';
 // On affiche soit les groupes soit les utilisateurs
 
 if(!empty($pass) AND $pass == 'groupe')

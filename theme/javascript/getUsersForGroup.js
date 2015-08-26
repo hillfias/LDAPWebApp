@@ -62,20 +62,20 @@ function getUsersForGroup(group) {
 							output+='<img class="imageprofil" src="data:image/jpeg;base64,'+ mydata[i].photo +'" width="25px" />';
 							if(mydata[i].isAdmin == "true")
 							{
-								output+= '<span class="icon-admin icon-admin-menu"></span>';
+								output+= '<span class="icon-admin icon-admin-menu" title="Administrateur" alt="Administrateur"></span>';
 							}
-							output+='<strong>'+mydata[i].forname+' '+mydata[i].lastname+'</strong>';
+							output+='<strong onclick="alert(\'tadaaa\');" style="cursor:pointer;">'+mydata[i].forname+' '+mydata[i].lastname+'</strong>';
 							if(mydata[i].isRemovable == "true")
 							{
-								output+= '<a href="" class="right icon-remove-user"></a>';
+								output+= '<a href="" class="right icon-remove-user" title="Enlever l\'utilisateur de ce groupe" onclick="kickUser(\''+mydata[i].pseudo+'\',\''+group+'\'); return false;"></a>';
 							}
 							else
 							{
-								output+= '<a href="" class="right icon-delete-user" onclick="deleteUser(\''+mydata[i].pseudo+'\'); return false;"></a>';
+								output+= '<a href="" class="right icon-delete-user" title="Supprimer l\'utilisateur" onclick="deleteUser(\''+mydata[i].pseudo+'\'); return false;"></a>';
 							}
 							if(mydata[i].isAdminRemovable == "true")
 							{
-								output+= '<a href="" class="right icon-remove-admin"></a>';
+								output+= '<a href="" class="right icon-remove-admin" title="Supprimer les droits admin"></a>';
 							}
 							output+='</p>';
 						}
