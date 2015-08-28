@@ -67,7 +67,8 @@ function getUsersForGroup(group) {
 							output+='<strong onclick="alert(\'tadaaa\');" style="cursor:pointer;">'+mydata[i].forname+' '+mydata[i].lastname+'</strong>';
 							if(mydata[i].isRemovable == "true")
 							{
-								output+= '<a href="" class="right icon-remove-user" title="Enlever l\'utilisateur de ce groupe" onclick="kickUser(\''+mydata[i].pseudo+'\',\''+group+'\'); return false;"></a>';
+								if(group == 'admin') output+= '<a href="" class="right icon-remove-admin" title="Supprimer les droits admin" onclick="kickUser(\''+mydata[i].pseudo+'\',\''+group+'\'); return false;"></a>';
+								else output+= '<a href="" class="right icon-remove-user" title="Enlever l\'utilisateur de ce groupe" onclick="kickUser(\''+mydata[i].pseudo+'\',\''+group+'\'); return false;"></a>';
 							}
 							else
 							{

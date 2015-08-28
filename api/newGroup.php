@@ -8,8 +8,25 @@ header("Content-Type: text/plain");
 *
 * @return : a confirmation or error message (text)
 * */
+$adgr = array_keys(array_flip(json_decode($_POST['adgr'])));
 
-if(!empty($_POST['nom']) AND !empty($_POST['adgr']) AND preg_match("#^[a-zA-Z]+$#",$_POST['nom']) AND preg_match("#^[a-zA-Z-]+$#",$_POST['adgr']))
+if(count($adgr) > 0)
+{
+	for($i=0;$i<count($adgr);$i++)
+	{
+		if(!preg_match("#^[a-zA-Z-]+$#",$adgr[$i]))
+		{
+			echo 'Données non conformes.';
+			exit();
+		}	
+	}
+}
+else 
+{
+	echo 'Données non conformes.';
+	exit();
+}
+if(!empty($_POST['nom']) AND preg_match("#^[a-zA-Z]+$#",$_POST['nom']))
 {
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// On a besoin de récupérer les infos sur les groupes pour le formulaire/ pour ajouter un nouvel utilisateur
@@ -24,7 +41,6 @@ if(!empty($_POST['nom']) AND !empty($_POST['adgr']) AND preg_match("#^[a-zA-Z]+$
 	
 	// On traite les données : nom et diminutif de l'admin du groupe
 	$nom = $_POST['nom'];
-	$adgr = $_POST['adgr'];
 	$gid = (int) file_get_contents('../data/gid.txt');
 	if(!$gid)
 	{
@@ -50,7 +66,17 @@ if(!empty($_POST['nom']) AND !empty($_POST['adgr']) AND preg_match("#^[a-zA-Z]+$
 	$info["objectClass"][0] = "posixGroup";
 	$info["objectClass"][1] = "top";
 	$info["objectClass"][2] = "extensibleObject";
-	$info["owner"] = "cn=$adgr,ou=users,dc=rBOX,dc=lan";
+	$info["owner"] = "";
+	for($i=0;$i<count($adgr);$i++)
+	{
+		$info["owner"] .= "cn=".$adgr[$i].",ou=users,dc=rBOX,dc=lan";
+		
+		if($i < (count($adgr)-1))
+		{
+			$info["owner"] .= ",";
+		}
+	}
+	
 	
 	$j=0;
 	$info["memberUid"] = array();
@@ -63,7 +89,14 @@ if(!empty($_POST['nom']) AND !empty($_POST['adgr']) AND preg_match("#^[a-zA-Z]+$
 		}
 	}
 	
-	if(!in_array($adgr,$info["memberUid"])) $info["memberUid"][$j] = $adgr;
+	for($i=0;$i<count($adgr);$i++)
+	{
+		if(!in_array($adgr[$i],$info["memberUid"]))
+		{
+			$info["memberUid"][$j] = $adgr[$i];
+			$j++;
+		}
+	}
 
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// On ajoute les données au dossier

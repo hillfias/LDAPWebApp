@@ -73,14 +73,14 @@ function getAddUserPage()
 			output+= '<br />';
 			
 			output+= 'Ajouter un utilisateur à d\'autres groupes :   ';
-			output+= '<a onclick="javascript:checkAll(\'form\', true);" href="javascript:void();">tout cocher</a> |'; 
+			output+= '<a onclick="javascript:checkAll(\'form\', true);" href="javascript:void();">tout cocher</a> | '; 
 			output+= '<a onclick="javascript:checkAll(\'form\', false);" href="javascript:void();">tout décocher</a>';
 			output+= '<br />';
 			
 			for (var i=1; i<mydata.length; i++)
 			{
 				
-				output+='<label for="'+mydata[i].name+'">Clicquer pour cocher le groupe \''+mydata[i].name+'\'</label><input type="checkbox" name="'+mydata[i].name+'" id="'+mydata[i].name+'" /><br />';
+				output+='<label for="'+mydata[i].name+'">Cliquer pour cocher le groupe \''+mydata[i].name+'\'</label><input type="checkbox" name="'+mydata[i].name+'" id="'+mydata[i].name+'" /><br />';
 				
 			}
 			

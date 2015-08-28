@@ -38,7 +38,7 @@ if ($group)
 		$infoUser = array();
 		$infoUser['photo'] = base64_encode($infoUsers[0]['jpegphoto'][0]);
 		$infoUser['isAdmin'] = "false";
-		if(strpos($membresGroupe[0]['owner'][0],$membresGroupe[0]['memberuid'][$nbusers]))
+		if(!empty($membresGroupe[0]['owner']) AND strpos($membresGroupe[0]['owner'][0],$membresGroupe[0]['memberuid'][$nbusers]))
 		{
 			$infoUser['isAdmin'] = "true";
 		}

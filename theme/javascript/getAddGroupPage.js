@@ -1,6 +1,5 @@
 function getAddGroupPage()
-{
-	
+{	
 	var xhr = new XMLHttpRequest();
 	
 	xhr.onreadystatechange = function()
@@ -41,7 +40,7 @@ function getAddGroupPage()
 
 			output+= '<label for="adgr">Membre administrateur du groupe :*</label>';
 			
-			output+= '<select name="adgr" id="adgr">';
+			output+= '<select name="adgr[]" id="adgr">';
 			for (var i=0; i<mydata.length; i++)
 			{
 				output+= '<option value="'+mydata[i].pseudo+'">'+mydata[i].forname+' '+mydata[i].lastname+'</option>';
@@ -53,14 +52,18 @@ function getAddGroupPage()
 			
 			
 			
+			output+= '<a href="#" onclick="newAdmin(); return false;" style="clear:both;">Ajouter un autre administrateur ?</a>';
+			output+= '<br />';
+			output+= '<br />';
+			
 			output+= 'Ajouter des membres au groupe : ';
-			output+= '<a onclick="javascript:checkAll(\'form\', true);" href="javascript:void();">tout cocher</a> |'; 
+			output+= '<a onclick="javascript:checkAll(\'form\', true);" href="javascript:void();">tout cocher</a> | '; 
 			output+= '<a onclick="javascript:checkAll(\'form\', false);" href="javascript:void();">tout décocher</a>';
 			output+= '<br />';
 			
 			for (var i=0; i<mydata.length; i++)
 			{
-				output+='<label for="'+mydata[i].pseudo+'">Clicquer pour cocher l\'utilisateur \''+mydata[i].forname +' '+mydata[i].lastname+'\'</label><input type="checkbox" name="'+mydata[i].pseudo+'" id="'+mydata[i].pseudo+'" /><br />';
+				output+='<label for="'+mydata[i].pseudo+'">Cliquer pour cocher l\'utilisateur \''+mydata[i].forname +' '+mydata[i].lastname+'\'</label><input type="checkbox" name="'+mydata[i].pseudo+'" id="'+mydata[i].pseudo+'" /><br />';
 			}
 			
 			
@@ -76,3 +79,16 @@ function getAddGroupPage()
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 	xhr.send("attributes=cnSTOPgivennameSTOPsn");
 }
+function newAdmin(){
+
+	
+	
+	var referenceNode = document.getElementById("adgr");
+	var sel = referenceNode.cloneNode(true);
+	
+	referenceNode.parentNode.insertBefore(sel, referenceNode.nextSibling);
+	var div = document.createElement("div");
+	div.setAttribute("id", "space");
+	sel.parentNode.insertBefore(div, sel.nextSibling);
+
+	}

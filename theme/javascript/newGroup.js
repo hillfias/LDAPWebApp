@@ -130,16 +130,25 @@ function newGroup()
 	// Données obligatoire
 	
 	var nom = document.getElementById('nom').value;
-	var adgr = document.getElementById('adgr').value;
+	var admins = new Array();
+	var adgr = document.getElementById('adgr');
+	admins.push(adgr.value);
+	var otherAdgr = adgr;
+	while(otherAdgr = otherAdgr.nextSibling)
+	{
+		if(otherAdgr == '[object HTMLSelectElement]')admins.push(otherAdgr.value);
+	}
 	
-	if(nom.length > 0 && adgr.length > 0)
+	
+	if(nom.length > 0 && admins.length > 0 && admins[0].length > 0)
 	{
 		
 		// Si celles-ci sont non vides on les ajoutent et on regarde si les autres existent
 		var formData = new FormData();
 		
 		formData.append('nom', nom);
-		formData.append('adgr', adgr);
+		var admins = JSON.stringify(admins);
+		formData.append('adgr', admins);
 		
 		// Ici on s'occupe des utilisateurs à rajouter directement
 		var group = document.querySelectorAll('input[type="checkbox"]');
@@ -153,6 +162,7 @@ function newGroup()
 		xhr.open("POST", "api/newGroup.php", true);
 		xhr.send(formData);
 	}
+	
 	else
 	{
 		if(!document.getElementById('erreur'))
