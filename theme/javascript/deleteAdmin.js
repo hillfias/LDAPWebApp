@@ -1,4 +1,4 @@
-function addAdmin(group)
+function deleteAdmin(username,group)
 {
 	function remove(id) {
 	var elem=document.getElementById(id);
@@ -16,7 +16,7 @@ function addAdmin(group)
 		{
 			if(document.getElementById('erreur')) remove('erreur');
 			var mess = xhr.responseText; 
-			if (mess == 'Le ou les admins a/ont été correctement ajouté(s).')
+			if (mess == 'L\'admin a été correctement supprimé.')
 			{
 				var head = document.getElementsByTagName("head")[0];
 			
@@ -61,27 +61,8 @@ function addAdmin(group)
 			{
 				if(!document.getElementById('erreur'))
 				{
-					// sans aucun ID, attribut ou contenu
-					var sp1 = document.createElement("p");
-
-					// lui donne un attribut id appelé 'nouveauSpan'
-					sp1.setAttribute("class", "red center");
-					sp1.setAttribute("id", "erreur");
-
-					// crée un peu de contenu pour cet élément.
-					var sp1_content = document.createTextNode("Une erreur est survenue : "+mess);
-
-					// ajoute ce contenu au nouvel élément
-					sp1.appendChild(sp1_content);
-
-					// Obtient une référence de l'élément devant lequel on veut insérer notre nouveau span
-					var sp2 = document.querySelectorAll('form[name="form"]');
-
-					// Obtient une référence du nœud parent
-					var parentDiv = sp2[0].parentNode;
-
-					// insère le nouvel élément dans le DOM avant sp2
-					parentDiv.insertBefore(sp1, sp2[0]);
+					output = '<p id="erreur" class="red center">Une erreur est survenue : '+mess+'</p>';
+					document.getElementById('main-panel').innerHTML=output;
 				}
 			}
 			
@@ -94,16 +75,10 @@ function addAdmin(group)
 
 	var formData = new FormData();
 	formData.append('group', group);
+	formData.append('username', username);
 	// Ici on s'occupe des utilisateurs à rajouter directement
-	var group = document.querySelectorAll('input[type="checkbox"]');
-	for (var i=0; i<group.length; i++)
-	{
-		if(group[i].checked)
-		{
-			formData.append(group[i].getAttribute("name"), 'on');
-		}
-	}
-	xhr.open("POST", "api/addAdmin.php", true);
+	
+	xhr.open("POST", "api/deleteAdmin.php", true);
 	xhr.send(formData);
 	
 }

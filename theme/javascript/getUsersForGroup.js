@@ -76,7 +76,7 @@ function getUsersForGroup(group) {
 							}
 							if(mydata[i].isAdminRemovable == "true")
 							{
-								output+= '<a href="" class="right icon-remove-admin" title="Supprimer les droits admin"></a>';
+								output+= '<a href="" class="right icon-remove-admin" title="Supprimer les droits admin" onclick="deleteAdmin(\''+mydata[i].pseudo+'\',\''+group+'\'); return false;"></a>';
 							}
 							output+='</p>';
 						}

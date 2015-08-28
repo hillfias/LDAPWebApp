@@ -1,49 +1,44 @@
 <?php
 header("Content-Type: text/plain");
 /**
- * add an admin
+ * delete an admin
  * @param : group name [required]
  * @param : user names(pseudo) [required]
  * @return : success/fail message (txt)
  * */
 
-if(!empty($_POST['group']) AND count($_POST) > 1)
+if(!empty($_POST['group']) AND !empty($_POST['username']))
 {
 	$group = $_POST['group'];
-	
+	$username = $_POST['username'];
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// On a besoin de récupérer les infos sur les groupes pour le formulaire/ pour ajouter un nouvel utilisateur
 	include('../ldap/index.php');
 	$ds = connectionLDAP();
 	$infoGroup = search($ds,'&(objectclass=posixGroup)(cn='.$group.')',array('owner'));
-	$infoUsers = search($ds,'objectclass=posixAccount',array('cn'));
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-	$j=0;
-	$owner = array();
-	for($i=0;$i<$infoUsers['count'];$i++)
+	
+	$entry['owner'] = $infoGroup[0]['owner'][0];
+	if($entry['owner'] == "cn=".$username.",ou=users,dc=rBOX,dc=lan")
 	{
-		if(!empty($_POST[$infoUsers[$i]['cn'][0]]))
-		{
-			$owner[$j] = $infoUsers[$i]['cn'][0];
-			$j++;
-		}
+		echo 'Il doit y avoir au moins un admin par groupe. Veuillez en ajouter un autre avant de supprimer celui-ci.';
+		exit();
+	}
+	else
+	{
+		$entry['owner'] = str_replace( "cn=".$username.",ou=users,dc=rBOX,dc=lan", '' , $entry['owner']);
+		if(substr($entry['owner'],0,1) == ',')	$entry['owner'] = substr_replace( $entry['owner'] ,'' , 0 ,1 );
+		else $entry['owner'] = substr_replace( $entry['owner'] ,'' , strlen($entry['owner'])-1 ,1 );
 	}
 	
-	$entry['owner'] = $infoGroup[0]['owner'][0].',';
-	for($i=0;$i<count($owner);$i++)
-	{
-		$entry['owner'] .= "cn=".$owner[$i].",ou=users,dc=rBOX,dc=lan";
-		if($i < (count($owner)-1)) $entry['owner'] .= ',';
-	}
 	
 	$dn="cn=$group,ou=groups,dc=rBOX,dc=lan";
 
 	$r = ldap_modify($ds,$dn,$entry);
 	 
-	 if($r) echo 'Le ou les admins a/ont été correctement ajouté(s).';
+	 if($r) echo 'L\'admin a été correctement supprimé.';
 	 else echo 'Données non conformes.';
 
 	
