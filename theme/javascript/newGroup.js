@@ -20,11 +20,13 @@ function newGroup()
 			{
 				if (confirm('Voulez-vous ajouter un nouveau groupe ?'))
 				{
+					if(document.getElementById('mess')) remove('mess');
 					// sans aucun ID, attribut ou contenu
 					var p = document.createElement("p");
 
 					// lui donne un attribut id appelé 'nouveauSpan'
 					p.setAttribute("class", "success center");
+					p.setAttribute("id", "mess");
 
 					// crée un peu de contenu pour cet élément.
 					var p_content = document.createTextNode(mess);
@@ -59,7 +61,7 @@ function newGroup()
 				
 					var js = document.createElement("script");
 					js.type = "text/javascript";
-					js.text = 'setTimeout("window.location=\'accueil.php\'",3000);';
+					js.text = 'setTimeout("window.location=\'accueil.php\'",1000);';
 					head.appendChild(js);
 					
 					output = '<p class="center success">'+mess+'</p>';

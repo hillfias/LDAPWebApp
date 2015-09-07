@@ -11,9 +11,10 @@ if(!empty($_POST['group']) AND !empty($_POST['username']))
 {
 	$group = $_POST['group'];
 	$username = $_POST['username'];
+	
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// On a besoin de récupérer les infos sur les groupes pour le formulaire/ pour ajouter un nouvel utilisateur
-	include('../ldap/index.php');
+	include_once('../ldap/index.php');
 	$ds = connectionLDAP();
 	$infoGroup = search($ds,'&(objectclass=posixGroup)(cn='.$group.')',array('owner'));
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -31,8 +32,9 @@ if(!empty($_POST['group']) AND !empty($_POST['username']))
 		$entry['owner'] = str_replace( "cn=".$username.",ou=users,dc=rBOX,dc=lan", '' , $entry['owner']);
 		if(substr($entry['owner'],0,1) == ',')	$entry['owner'] = substr_replace( $entry['owner'] ,'' , 0 ,1 );
 		else $entry['owner'] = substr_replace( $entry['owner'] ,'' , strlen($entry['owner'])-1 ,1 );
+		$entry['owner'] = str_replace( ",,", ',' , $entry['owner']);
 	}
-	
+
 	
 	$dn="cn=$group,ou=groups,dc=rBOX,dc=lan";
 
@@ -40,8 +42,6 @@ if(!empty($_POST['group']) AND !empty($_POST['username']))
 	 
 	 if($r) echo 'L\'admin a été correctement supprimé.';
 	 else echo 'Données non conformes.';
-
-	
 	
 	kill($ds);
 }

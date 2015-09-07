@@ -1,4 +1,4 @@
-function deleteAdmin(username,group)
+function giveAdminRights(username)
 {
 	function remove(id) {
 	var elem=document.getElementById(id);
@@ -16,13 +16,13 @@ function deleteAdmin(username,group)
 		{
 			if(document.getElementById('erreur')) remove('erreur');
 			var mess = xhr.responseText; 
-			if (mess == 'L\'admin a été correctement supprimé.')
+			if (mess == 'L\'admin a été correctement ajouté.')
 			{
 				var head = document.getElementsByTagName("head")[0];
 				
 				var js = document.createElement("script");
 				js.type = "text/javascript";
-				js.text = 'setTimeout("window.location=\'accueil.php\'",5000);';
+				js.text = 'setTimeout("window.location=\'accueil.php\'",1000);';
 				head.appendChild(js);
 				
 				output = '<p class="center success">'+mess+'</p>';
@@ -75,10 +75,9 @@ function deleteAdmin(username,group)
 	// Données obligatoire
 
 	var formData = new FormData();
-	formData.append('group', group);
 	formData.append('username', username);
 	// Ici on s'occupe des utilisateurs à rajouter directement
 	
-	xhr.open("POST", "api/deleteAdmin.php", true);
+	xhr.open("POST", "api/giveAdminRights.php", true);
 	xhr.send(formData);
 }

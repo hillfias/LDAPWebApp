@@ -12,7 +12,8 @@ header("Content-Type: text/plain");
 $group = (isset($_POST["group"])) ? $_POST["group"] : NULL;
 $attributes = (isset($_POST["attributes"])) ? $_POST["attributes"] : NULL;
 $attributes = explode('STOP',$attributes);
-
+$groupesAdmin = (isset($_POST["groupesAdmin"])) ? $_POST["groupesAdmin"] : NULL;
+$groupesAdmin = explode('STOP',$groupesAdmin);
 $CONSTANTES['cheminImages'] = 'theme/images/';
 
 if ($group)
@@ -24,18 +25,26 @@ if ($group)
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// On récupère la liste des utilisateurs et des admins du groupe
 	$membresGroupe = search($ds,'&(objectclass=posixGroup)(cn='.$group.')',array('memberUid','owner'));
+	$membresGroupeAdmin = search($ds,'&(objectclass=posixGroup)(cn=admin)',array('memberUid'));
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	$infos = array();				
+	$infos = array();	
+	if(in_array($group,$groupesAdmin)) array_push($infos,array('isAdminOfGroup' => "true",'username' => $_POST['username']));
+	else array_push($infos,array('isAdminOfGroup' => "false",'username' => $_POST['username']));
 	
 	// On affiche maintenant les utilisateurs qui appartiennent au groupe avec leurs données respectives 
 	for($nbusers=0;$nbusers<$membresGroupe[0]['memberuid']['count'];$nbusers++)
 	{
+		   
+		
+		
 		// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		$infoUsers = search($ds,'&(objectclass=posixAccount)(cn='.$membresGroupe[0]['memberuid'][$nbusers].')',$attributes);
 		// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 		$infoUser = array();
+		if(in_array($membresGroupe[0]['memberuid'][$nbusers],$membresGroupeAdmin[0]['memberuid'])) $infoUser['isSuperAdmin'] = "true";
+		else $infoUser['isSuperAdmin'] = "false";
 		$infoUser['photo'] = base64_encode($infoUsers[0]['jpegphoto'][0]);
 		$infoUser['isAdmin'] = "false";
 		if(!empty($membresGroupe[0]['owner']) AND strpos($membresGroupe[0]['owner'][0],$membresGroupe[0]['memberuid'][$nbusers]))

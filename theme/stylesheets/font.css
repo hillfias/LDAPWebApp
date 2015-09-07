@@ -53,7 +53,7 @@ opacity:1;
 
 /* global stuff in menu */
 
-.icon-delete-group, .icon-add-admin, .icon-delete-user, .icon-remove-user, .icon-remove-admin
+.icon-delete-group, .icon-add-admin, .icon-delete-user, .icon-remove-user, .icon-remove-admin, .icon-add-adminRights
 {
 cursor: pointer;
 width:25px;
@@ -68,7 +68,7 @@ color:rgb(100,100,100) !important;
 float:right;
 }
 
-.icon-delete-group:hover, .icon-add-admin:hover, .icon-delete-user:hover, .icon-remove-user:hover, .icon-remove-admin:hover
+.icon-delete-group:hover, .icon-add-admin:hover, .icon-delete-user:hover, .icon-remove-user:hover, .icon-remove-admin:hover, .icon-add-adminRights:hover
 {
 color:black !important;
 }
@@ -109,6 +109,14 @@ background:none;
 	content: "\e613";
 }
 
+.icon-add-adminRights:before{
+	content: "\e613";
+}
+.icon-add-adminRights{
+	width:15px;
+	height:15px;
+	font-size:15px;
+}
 
 .icon-delete-user:before {
 	content: "\e60c";

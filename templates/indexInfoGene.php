@@ -1,6 +1,8 @@
 <div class="gene">
 <?php
-echo '<span class="icon-add-group" title="Ajouter un nouveau groupe" onclick="getAddGroupPage();"></span>';
+if($_SESSION['statut'] == 'admin') echo '<span class="icon-add-group" title="Ajouter un nouveau groupe" onclick="getAddGroupPage();"></span>';
+
+
 echo '<form name="supportform" method="post" action=""><input type="hidden" name="supporttype" /><a href="javascript:getsupport(\'groupe\')">Groupe';
 
 if($infoNbGroupes['count'] == 0) echo ' : 0';
@@ -22,11 +24,12 @@ else
 {
 	echo ' Utilisateur</a></form> : '.$infoNbUsers['count'];
 }
+
+if($_SESSION['statut'] == 'admin')
+echo '<span class="icon-add-user" title="Ajouter un nouvel utilisateur" onclick="getAddUserPage();"></span>';
+
+
 ?>
-
-<span class="icon-add-user" title="Ajouter un nouvel utilisateur" onclick="getAddUserPage();">
-
-</span>
 </div>
 <div class="accordion">
     <dl>

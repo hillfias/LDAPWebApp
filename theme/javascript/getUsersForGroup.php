@@ -1,3 +1,5 @@
+
+<script language="JavaScript" type="text/javascript">
 function getUsersForGroup(group) {
 	
 	
@@ -56,7 +58,30 @@ function getUsersForGroup(group) {
 					}
 					else
 					{
-						for (var i=0; i<mydata.length; i++)
+						<?php 
+						if($_SESSION['statut'] == 'membre')
+						{
+						?>
+						
+						for (var i=1; i<mydata.length; i++)
+						{
+							output+='<p>';
+							output+='<img class="imageprofil" src="data:image/jpeg;base64,'+ mydata[i].photo +'" width="25px" />';
+							output+='<strong ';
+							if(mydata[0].username == mydata[i].pseudo) output += 'onclick="getModUserPage(\'<?php echo $_SESSION['username']; ?>\');" style="cursor:pointer;"';
+							output += '>'+mydata[i].forname+' '+mydata[i].lastname+'</strong>';
+							output+='</p>';
+						}
+						
+						
+						
+						<?php 
+						}
+						elseif($_SESSION['statut'] == 'admin')
+						{
+						?>
+						
+						for (var i=1; i<mydata.length; i++)
 						{
 							output+='<p>';
 							output+='<img class="imageprofil" src="data:image/jpeg;base64,'+ mydata[i].photo +'" width="25px" />';
@@ -64,7 +89,8 @@ function getUsersForGroup(group) {
 							{
 								output+= '<span class="icon-admin icon-admin-menu" title="Administrateur" alt="Administrateur"></span>';
 							}
-							output+='<strong onclick="alert(\'tadaaa\');" style="cursor:pointer;">'+mydata[i].forname+' '+mydata[i].lastname+'</strong>';
+							output+='<strong onclick="getModUserPage(\''+mydata[i].pseudo+'\');" style="cursor:pointer;">'+mydata[i].forname+' '+mydata[i].lastname+'</strong>';
+							
 							if(mydata[i].isRemovable == "true")
 							{
 								if(group == 'admin') output+= '<a href="" class="right icon-remove-admin" title="Supprimer les droits admin" onclick="kickUser(\''+mydata[i].pseudo+'\',\''+group+'\'); return false;"></a>';
@@ -89,6 +115,62 @@ function getUsersForGroup(group) {
 							}
 							output+='</p>';
 						}
+						
+						<?php 
+						}
+						else
+						{
+						?>
+						if(mydata[0].isAdminOfGroup == "true")
+						{
+							for (var i=1; i<mydata.length; i++)
+							{
+								output+='<p>';
+								output+='<img class="imageprofil" src="data:image/jpeg;base64,'+ mydata[i].photo +'" width="25px" />';
+								if(mydata[i].isAdmin == "true")
+								{
+									output+= '<span class="icon-admin icon-admin-menu" title="Administrateur" alt="Administrateur"></span>';
+								}
+								output+='<strong onclick="alert(\'<?php echo 'bonjour '.$_SESSION['username']; ?>\');" style="cursor:pointer;">'+mydata[i].forname+' '+mydata[i].lastname+'</strong>';
+								if(mydata[i].isRemovable == "true")
+								{
+									if(group == 'admin') output+= '<a href="" class="right icon-remove-admin" title="Supprimer les droits admin" onclick="kickUser(\''+mydata[i].pseudo+'\',\''+group+'\'); return false;"></a>';
+									else
+									{
+										output+= '<a href="" class="right icon-remove-user" title="Enlever l\'utilisateur de ce groupe" onclick="';
+										 
+										output += 'kickUser(\''+mydata[i].pseudo+'\',\''+group+'\'';
+										if(mydata[i].isAdminRemovable == "true") output += ',\'true\'';
+										else output += ',\'false\'';
+										output += '); return false;"></a>';
+									}
+								}
+								else
+								{
+									output+= '<a href="" class="right icon-delete-user" title="Supprimer l\'utilisateur" onclick="deleteUser(\''+mydata[i].pseudo+'\'); return false;"></a>';
+									if(mydata[i].isSuperAdmin == "false") output+= '<a href="" class="right icon-add-adminRights" title="Donner les droits admin" onclick="giveAdminRights(\''+mydata[i].pseudo+'\'); return false;"></a>';
+								}
+								if(mydata[i].isAdminRemovable == "true")
+								{
+									output+= '<a href="" class="right icon-remove-admin" title="Supprimer les droits admin" onclick="deleteAdmin(\''+mydata[i].pseudo+'\',\''+group+'\'); return false;"></a>';
+								}
+								output+='</p>';
+							}
+						}
+						else
+						{
+							for (var i=1; i<mydata.length; i++)
+							{
+								output+='<p>';
+								output+='<img class="imageprofil" src="data:image/jpeg;base64,'+ mydata[i].photo +'" width="25px" />';
+								output+='<strong onclick="alert(\'<?php echo 'bonjour '.$_SESSION['username']; ?>\');" style="cursor:pointer;">'+mydata[i].forname+' '+mydata[i].lastname+'</strong>';
+								output+='</p>';
+							}
+						}
+						<?php 
+						}
+						
+						?>
 					}
 				   
 					document.getElementById(group).innerHTML=output;
@@ -136,8 +218,9 @@ function getUsersForGroup(group) {
 			
 			xhr.open("POST", "api/getUsersForGroup.php", true);
 			xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-			xhr.send("attributes=jpegphotoSTOPgivennameSTOPsnSTOPcn&group=" + group);
+			xhr.send("attributes=jpegphotoSTOPgivennameSTOPsnSTOPcn&group=" + group+"&groupesAdmin=<?php if(!empty($_SESSION['groupesAdmin'])) echo implode('STOP',$_SESSION['groupesAdmin'])?>&username=<?php echo $_SESSION['username']; ?>");
 			
 		}
 
 }
+</script>

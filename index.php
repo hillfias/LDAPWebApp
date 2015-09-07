@@ -52,12 +52,13 @@ else
 		{
 			// On connecte l'utilisateur
 			$_SESSION['connected'] = 'Js%up£e58rP0w4;_a';
-			
+			$_SESSION ['username'] = $_POST['nom'];
 			// Selon son rang, il aura différents droits. On aimerait donc savoir s'il est admin ou administrateur d'un groupe (sinon c'est un simple membre et on connait ses droits)
 			
 			// S'il est admin
+			$infoGroup = search($ds,'&(objectclass=posixGroup)(cn=admin)',array('memberuid'));
 			
-			if($info[0]['cn'][0] == 'admin')
+			if(in_array($info[0]['cn'][0],$infoGroup[0]['memberuid']) || $info[0]['cn'][0] == 'admin')
 			{
 				$_SESSION ['statut'] = 'admin';
 				header('Location: accueil.php');
@@ -66,30 +67,32 @@ else
 			else
 			{
 				// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-				$infoGroupes = search($ds,'objectclass=posixGroup',array('owner'));
+				$infoGroupes = search($ds,'objectclass=posixGroup',array('owner','memberuid','cn'));
 				// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+				$_SESSION['groupes'] = array();
+				$_SESSION['groupesAdmin'] = array();
 				for($nbgroup=0;$nbgroup<$infoGroupes['count'];$nbgroup++)
 				{
 					// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 					// On récupère les infos sur l'administrateur du groupe
 					preg_match('#^cn=([a-z-]+),#',$infoGroupes[$nbgroup]['owner'][0],$owner);
 					
-					$infoAdmin = search($ds,'cn='.$owner[1],array('userpassword'));
+					$infoAdmin = search($ds,'cn='.$owner[1],array('cn'));
 					// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 					
 					// S'il est admin d'un groupe
-					if(!empty($infoAdmin[0]['userpassword'][0]))
+					if(!empty($infoAdmin[0]['cn'][0]) && $infoAdmin[0]['cn'][0] == $info[0]['cn'][0])
 					{
 						$_SESSION ['statut'] = 'adminGroupe';
-						header('Location: accueil.php');
+						array_push($_SESSION['groupesAdmin'],$infoGroupes[$nbgroup]['cn'][0]);
 					}
-					else
+					elseif(empty($_SESSION ['statut']))
 					{
 						$_SESSION ['statut'] = 'membre';
-						header('Location: accueil.php');
 					}
+					if(in_array($info[0]['cn'][0],$infoGroupes[$nbgroup]['memberuid']))  array_push($_SESSION['groupes'],$infoGroupes[$nbgroup]['cn'][0]);
 				}
+				header('Location: accueil.php');
 			}
 		}
 		// Sinon on affiche denouveau le formulaire avec une erreur de mot de passe

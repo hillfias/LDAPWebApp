@@ -1,34 +1,33 @@
 <?php
 header("Content-Type: text/plain");
 /**
- * kick a user
- * @param : user name(pseudo) [required]
- * @param : group name [required]
+ * add an admin (to the 'admin' group)
+ * @param : user names(pseudo) [required]
  * @return : success/fail message (txt)
  * */
- 
-if(!empty($_POST['user']) and !empty($_POST['group']))
+
+if(!empty($_POST['username']))
 {
-	$_POST['username'] = $_POST['user'];
+	$username = $_POST['username'];
 	
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	// On a besoin de récupérer les infos sur les groupes pour le formulaire/ pour ajouter un nouvel utilisateur
-	include('../ldap/index.php');
+	include_once('../ldap/index.php');
 	$ds = connectionLDAP();
 	// LDAP ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	$name = $_POST['user'];
-	$group = $_POST['group'];
 
-	$dn="cn=$group,ou=groups,dc=rBOX,dc=lan";
-	$entry['memberuid'] = $name;
-	$r = ldap_mod_del($ds,$dn,$entry);
+	
+	$entry['memberuid'] = $username;
+	
+	$dn="cn=admin,ou=groups,dc=rBOX,dc=lan";
+
+	$r = ldap_mod_add($ds,$dn,$entry);
 	 
-	 if($r) echo 'L\'utilisateur a été correctement enlever du groupe.';
+	 if($r) echo 'L\'admin a été correctement ajouté.';
 	 else echo 'Données non conformes.';
 
 	
 	
 	kill($ds);
-
 }
